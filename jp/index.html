@@ -45,7 +45,7 @@ a{color:#9bdcff;text-decoration:none}
 <div class="card">
   <div class="row" style="justify-content:space-between">
     <strong>結果</strong>
-    <button class="sub" id="copyBtn" onclick="copy()">コピー</button>
+    <button class="sub" id="copyBtn" onclick="copy()">コピーする</button>
   </div>
   <div class="out" id="out">ここに結果が表示されます</div>
 </div>
@@ -65,7 +65,7 @@ function copy(){
 
   const b=document.getElementById("copyBtn");
   const old=b.textContent;
-  b.textContent="✓ コピーした";
+  b.textContent="✓ コピー完了";
   b.style.background="#16a34a";
   b.style.color="#fff";
 
