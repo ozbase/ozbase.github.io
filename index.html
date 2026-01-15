@@ -2,10 +2,10 @@
 <html lang="ja">
 <meta charset="utf-8">
 <title>ozbase</title>
-<body>
-<h1>ozbase</h1>
-<p>AI tools coming soon.</p>
-</body>
+<script>
+const ua = navigator.userAgent;
+const isMobile = /iPhone|Android.*Mobile/.test(ua);
+location.href = isMobile ? "/ja/" : "/en/";
+</script>
+<body></body>
 </html>
-
-
