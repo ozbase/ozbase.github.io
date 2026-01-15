@@ -3,9 +3,8 @@
 <meta charset="utf-8">
 <title>ozbase</title>
 <script>
-const ua = navigator.userAgent;
-const isMobile = /iPhone|Android.*Mobile/.test(ua);
-location.href = isMobile ? "/ja/" : "/en/";
+const lang = navigator.language || "";
+location.href = lang.startsWith("ja") ? "/jp/" : "/en/";
 </script>
 <body></body>
 </html>
