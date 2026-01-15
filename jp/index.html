@@ -2,35 +2,65 @@
 <html lang="ja">
 <meta charset="utf-8">
 <title>ozbase</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body{font-family:sans-serif;max-width:720px;margin:40px auto;padding:0 16px}
-h1{margin-bottom:8px}
-.box{border:1px solid #ddd;border-radius:8px;padding:12px;margin-top:12px}
-textarea{width:100%;height:120px}
-button{padding:10px 14px;border-radius:6px;border:0;background:#111;color:#fff;cursor:pointer}
-.out{min-height:80px;background:#fafafa}
-.lang{float:right}
+:root{--bg:#0b0c10;--card:#111318;--fg:#e8e8ea;--muted:#9aa0a6;--acc:#6ee7ff}
+*{box-sizing:border-box}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  background:linear-gradient(180deg,#0b0c10,#0f1220);
+  color:var(--fg);max-width:760px;margin:32px auto;padding:0 16px}
+h1{font-size:28px;margin:8px 0}
+p{color:var(--muted)}
+.card{background:var(--card);border:1px solid #1c2030;border-radius:14px;padding:14px;margin-top:14px}
+textarea{width:100%;height:140px;background:#0e1020;color:var(--fg);
+  border:1px solid #22264a;border-radius:10px;padding:10px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button{padding:10px 14px;border-radius:10px;border:0;
+  background:linear-gradient(135deg,#6ee7ff,#8b5cf6);color:#081018;
+  font-weight:700;cursor:pointer}
+button.sub{background:#1a1d3a;color:#cfd4ff}
+.out{min-height:96px;background:#0e1020;border:1px dashed #2a2f66;border-radius:12px;padding:10px}
+.top{display:flex;justify-content:space-between;align-items:center}
+.badge{font-size:12px;color:#9bdcff}
+a{color:#9bdcff;text-decoration:none}
 </style>
 
-<div class="lang">
-  <a href="/jp/">JP</a> | <a href="/en/">EN</a>
+<div class="top">
+  <div class="badge">AI text improver (preview)</div>
+  <div><a href="/jp/">JP</a> | <a href="/en/">EN</a></div>
 </div>
 
 <h1>ozbase</h1>
-<p>文章を入れてください（ダミー）</p>
+<p>文章を貼るだけ。読みやすく自然に整えます。</p>
 
-<div class="box">
-  <textarea placeholder="ここに文章"></textarea>
-  <br><br>
-  <button onclick="run()">改善する</button>
+<div class="card">
+  <textarea id="in" placeholder="例：この文章を自然に直してほしいです。"></textarea>
+  <div class="row" style="margin-top:10px">
+    <button onclick="run()">改善する</button>
+    <button class="sub" onclick="example()">例を入れる</button>
+    <span class="badge">無料・ダミー</span>
+  </div>
 </div>
 
-<div class="box out" id="out">結果がここに出ます</div>
+<div class="card">
+  <div class="row" style="justify-content:space-between">
+    <strong>結果</strong>
+    <button class="sub" onclick="copy()">コピー</button>
+  </div>
+  <div class="out" id="out">ここに結果が表示されます</div>
+</div>
 
 <script>
 function run(){
+  const v=document.getElementById("in").value.trim();
   document.getElementById("out").textContent =
-    "（ダミー）文章を改善しました。";
+    v ? "（ダミー）自然で読みやすい文章に改善しました。" : "文章を入力してください。";
+}
+function example(){
+  document.getElementById("in").value="この文章をもっと自然にしてください。";
+}
+function copy(){
+  navigator.clipboard.writeText(document.getElementById("out").textContent);
 }
 </script>
 </html>
