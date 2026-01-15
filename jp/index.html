@@ -45,7 +45,7 @@ a{color:#9bdcff;text-decoration:none}
 <div class="card">
   <div class="row" style="justify-content:space-between">
     <strong>結果</strong>
-    <button class="sub" onclick="copy()">コピー</button>
+    <button class="sub" id="copyBtn" onclick="copy()">コピー</button>
   </div>
   <div class="out" id="out">ここに結果が表示されます</div>
 </div>
@@ -60,7 +60,20 @@ function example(){
   document.getElementById("in").value="この文章をもっと自然にしてください。";
 }
 function copy(){
-  navigator.clipboard.writeText(document.getElementById("out").textContent);
+  const out=document.getElementById("out").textContent;
+  navigator.clipboard.writeText(out);
+
+  const b=document.getElementById("copyBtn");
+  const old=b.textContent;
+  b.textContent="✓ コピーした";
+  b.style.background="#16a34a";
+  b.style.color="#fff";
+
+  setTimeout(()=>{
+    b.textContent=old;
+    b.style.background="#1a1d3a";
+    b.style.color="#cfd4ff";
+  },1200);
 }
 </script>
 </html>
