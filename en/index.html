@@ -2,35 +2,78 @@
 <html lang="en">
 <meta charset="utf-8">
 <title>ozbase</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body{font-family:sans-serif;max-width:720px;margin:40px auto;padding:0 16px}
-h1{margin-bottom:8px}
-.box{border:1px solid #ddd;border-radius:8px;padding:12px;margin-top:12px}
-textarea{width:100%;height:120px}
-button{padding:10px 14px;border-radius:6px;border:0;background:#111;color:#fff;cursor:pointer}
-.out{min-height:80px;background:#fafafa}
-.lang{float:right}
+:root{--bg:#0b0c10;--card:#111318;--fg:#e8e8ea;--muted:#9aa0a6;--acc:#6ee7ff}
+*{box-sizing:border-box}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  background:linear-gradient(180deg,#0b0c10,#0f1220);
+  color:var(--fg);max-width:760px;margin:32px auto;padding:0 16px}
+h1{font-size:28px;margin:8px 0}
+p{color:var(--muted)}
+.card{background:var(--card);border:1px solid #1c2030;border-radius:14px;padding:14px;margin-top:14px}
+textarea{width:100%;height:140px;background:#0e1020;color:var(--fg);
+  border:1px solid #22264a;border-radius:10px;padding:10px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button{padding:10px 14px;border-radius:10px;border:0;
+  background:linear-gradient(135deg,#6ee7ff,#8b5cf6);color:#081018;
+  font-weight:700;cursor:pointer}
+button.sub{background:#1a1d3a;color:#cfd4ff}
+.out{min-height:96px;background:#0e1020;border:1px dashed #2a2f66;border-radius:12px;padding:10px}
+.top{display:flex;justify-content:space-between;align-items:center}
+.badge{font-size:12px;color:#9bdcff}
+a{color:#9bdcff;text-decoration:none}
 </style>
 
-<div class="lang">
-  <a href="/jp/">JP</a> | <a href="/en/">EN</a>
+<div class="top">
+  <div class="badge">AI text improver (preview)</div>
+  <div><a href="/jp/">JP</a> | <a href="/en/">EN</a></div>
 </div>
 
 <h1>ozbase</h1>
-<p>Paste your text (dummy)</p>
+<p>Paste your text and click Improve.</p>
 
-<div class="box">
-  <textarea placeholder="Paste text here"></textarea>
-  <br><br>
-  <button onclick="run()">Improve</button>
+<div class="card">
+  <textarea id="in" placeholder="Paste text here"></textarea>
+  <div class="row" style="margin-top:10px">
+    <button onclick="run()">Improve</button>
+    <button class="sub" onclick="example()">Example</button>
+    <span class="badge">Free · Dummy</span>
+  </div>
 </div>
 
-<div class="box out" id="out">Result will appear here</div>
+<div class="card">
+  <div class="row" style="justify-content:space-between">
+    <strong>Result</strong>
+    <button class="sub" id="copyBtn" onclick="copy()">Copy</button>
+  </div>
+  <div class="out" id="out">Result will appear here</div>
+</div>
 
 <script>
 function run(){
+  const v=document.getElementById("in").value.trim();
   document.getElementById("out").textContent =
-    "(Dummy) Improved text.";
+    v ? "(Dummy) Improved and easier to read." : "Please enter some text.";
+}
+function example(){
+  document.getElementById("in").value="Please make this text sound more natural.";
+}
+function copy(){
+  const out=document.getElementById("out").textContent;
+  navigator.clipboard.writeText(out);
+
+  const b=document.getElementById("copyBtn");
+  const old=b.textContent;
+  b.textContent="✓ Copied";
+  b.style.background="#16a34a";
+  b.style.color="#fff";
+
+  setTimeout(()=>{
+    b.textContent=old;
+    b.style.background="#1a1d3a";
+    b.style.color="#cfd4ff";
+  },1200);
 }
 </script>
 </html>
