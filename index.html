@@ -4,7 +4,8 @@
 <title>ozbase</title>
 <script>
 const lang = navigator.language || "";
-location.href = lang.startsWith("ja") ? "/jp/" : "/en/";
+location.href = /ja/i.test(lang) ? "/jp/" : "/en/";
 </script>
 <body></body>
 </html>
+
