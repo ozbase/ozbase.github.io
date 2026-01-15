@@ -2,7 +2,35 @@
 <html lang="en">
 <meta charset="utf-8">
 <title>ozbase</title>
-<body>
-<h1>ozbase (English)</h1>
-</body>
+<style>
+body{font-family:sans-serif;max-width:720px;margin:40px auto;padding:0 16px}
+h1{margin-bottom:8px}
+.box{border:1px solid #ddd;border-radius:8px;padding:12px;margin-top:12px}
+textarea{width:100%;height:120px}
+button{padding:10px 14px;border-radius:6px;border:0;background:#111;color:#fff;cursor:pointer}
+.out{min-height:80px;background:#fafafa}
+.lang{float:right}
+</style>
+
+<div class="lang">
+  <a href="/jp/">JP</a> | <a href="/en/">EN</a>
+</div>
+
+<h1>ozbase</h1>
+<p>Paste your text (dummy)</p>
+
+<div class="box">
+  <textarea placeholder="Paste text here"></textarea>
+  <br><br>
+  <button onclick="run()">Improve</button>
+</div>
+
+<div class="box out" id="out">Result will appear here</div>
+
+<script>
+function run(){
+  document.getElementById("out").textContent =
+    "(Dummy) Improved text.";
+}
+</script>
 </html>
