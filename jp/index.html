@@ -1,9 +1,13 @@
-<!doctype html>
-<html lang="ja">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- ブラウザのタイトル（タブ名） -->
   <title>ozbase</title>
+
+  <!-- タブのロゴ（favicon） -->
+  <link rel="icon" href="/assets/ozbase-logo.png" type="image/png">
+
   <style>
     :root{
       --bg:#0b0c10;
@@ -47,18 +51,14 @@
       text-decoration:none;
     }
     .logo{
-      width:56px;
-      height:56px;
+      width:88px;
+      height:88px;
       display:block;
       background:transparent;
     }
-    .title{
-      display:flex;
-      flex-direction:column;
-      line-height:1.05;
-    }
-    .title b{font-size:18px}
-    .title span{font-size:12px;color:var(--muted)}
+
+    /* タイトル文字は完全に非表示（見た目だけ） */
+    .title{display:none}
 
     .right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
 
@@ -82,172 +82,5 @@
       cursor:pointer;
     }
     .btn:hover{border-color:rgba(255,255,255,.16)}
-
-    .hero{
-      margin-top:16px;
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:14px;
-    }
-    @media (max-width:900px){ .hero{grid-template-columns:1fr} }
-
-    .panel{
-      background:rgba(17,19,24,.7);
-      border:1px solid rgba(255,255,255,.06);
-      border-radius: var(--r);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .panel .p{padding:14px 14px 10px}
-    h1{margin:0;font-size:26px}
-    p{margin:8px 0 0;color:var(--muted)}
-
-    .tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-
-    .search{
-      display:flex;gap:10px;align-items:center;
-      padding:12px 14px 14px;
-      border-top:1px solid rgba(255,255,255,.06);
-      background:rgba(12,14,22,.55);
-    }
-    input[type="search"], select{
-      padding:11px 12px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.08);
-      background:#0e1020;
-      color:var(--fg);
-      outline:none;
-    }
-    input[type="search"]{flex:1}
-
-    .grid{
-      margin-top:16px;
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:12px;
-    }
-    .card{
-      grid-column: span 6;
-      background:rgba(17,19,24,.72);
-      border:1px solid rgba(255,255,255,.06);
-      border-radius: var(--r);
-      overflow:hidden;
-      box-shadow: var(--shadow);
-      display:flex;
-      min-height:160px;
-    }
-    @media (max-width:860px){ .card{grid-column:span 12} }
-
-    .thumb{
-      width:168px;min-width:168px;
-      background:#0e1020;
-      border-right:1px solid rgba(255,255,255,.06);
-      display:flex;align-items:center;justify-content:center;
-      color:rgba(255,255,255,.25);
-      font-weight:700;
-      position:relative;
-    }
-    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-    .thumb .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-
-    .cbody{padding:12px 12px 10px;display:flex;flex-direction:column;gap:8px;flex:1}
-
-    .meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-    .tag{
-      font-size:11px;
-      padding:5px 9px;border-radius:999px;
-      background:rgba(20,24,42,.85);
-      border:1px solid rgba(255,255,255,.06);
-      color:var(--muted);
-    }
-    .date{font-size:11px;color:var(--muted)}
-
-    .ctitle{font-size:15px;font-weight:750;line-height:1.35}
-    .linkrow{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    .sitelink{color:#9bdcff;text-decoration:none;font-weight:700;font-size:13px}
-    .sitelink:hover{text-decoration:underline}
-    .small{font-size:12px;color:var(--muted);line-height:1.5}
-
-    footer{
-      margin-top:22px;
-      color:var(--muted);
-      font-size:12px;
-      display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
-      opacity:.9;
-    }
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;}
   </style>
 </head>
-
-<body>
-<div class="wrap">
-<header>
-  <a class="brand" href="./">
-    <img src="/assets/ozbase-logo.png" alt="ozbase" class="logo">
-    <div class="title">
-      <b>ozbase</b>
-    </div>
-  </a>
-
-  <div class="right">
-    <span class="chip">引用: タイトル + サムネ + 元URL</span>
-    <a class="btn" href="./analysis.html">AI考察ページ（仮リンク）</a>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="panel">
-    <div class="p">
-      <h1>今日の更新</h1>
-      <p>テック系記事を並べて、別ページで「AIによる今後の予想」を出す。ここは一覧の枠だけ。</p>
-      <div class="tools">
-        <span class="chip">NAIM + Microsoft など</span>
-        <span class="chip">日本語表示固定</span>
-        <span class="chip">元記事はリンクのみ</span>
-      </div>
-    </div>
-
-    <div class="search">
-      <input id="q" type="search" placeholder="検索（タイトル/サイト/タグ）">
-      <select id="filter">
-        <option value="all">全部</option>
-        <option value="n">N</option>
-        <option value="a">A</option>
-        <option value="i">I</option>
-        <option value="m">M</option>
-        <option value="ms">Microsoft</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="panel">
-    <div class="p">
-      <h1>運用メモ（編集用）</h1>
-      <p class="small">
-        このファイルの <span class="mono">FEED</span> 配列をコピペで増やすだけで、フロント一覧が増える。
-      </p>
-      <div class="tools">
-        <button class="btn" id="seed">サンプル3件に戻す</button>
-        <button class="btn" id="dump">今のJSONを表示</button>
-      </div>
-    </div>
-    <div class="search">
-      <span class="small">次は: RSS/取得自動化 or 記事個別ページ</span>
-    </div>
-  </div>
-</section>
-
-<main class="grid" id="grid"></main>
-
-<footer>
-  <div>© <span id="y"></span> ozbase</div>
-  <div>※ 本文転載しない。タイトル/サムネ/URLのみ引用表記。</div>
-</footer>
-</div>
-
-<script>
-/* JS部分は元のまま */
-document.getElementById("y").textContent = new Date().getFullYear();
-</script>
-</body>
-</html>
