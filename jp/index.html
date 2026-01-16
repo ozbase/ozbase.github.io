@@ -13,12 +13,6 @@
       --line:#1c2030;
       --chip:#14182a;
 
-      /* NAIMっぽい4社グラデの雰囲気（仮） */
-      --n:#22c55e; /* N */
-      --a:#ef4444; /* A */
-      --i:#3b82f6; /* I */
-      --m:#a855f7; /* M */
-
       --shadow: 0 18px 60px rgba(0,0,0,.35);
       --r: 16px;
     }
@@ -36,6 +30,7 @@
     }
     a{color:inherit}
     .wrap{max-width:1080px;margin:0 auto;padding:22px 16px 56px}
+
     header{
       display:flex;align-items:center;justify-content:space-between;gap:12px;
       position:sticky;top:0;z-index:10;
@@ -43,19 +38,30 @@
       backdrop-filter: blur(10px);
       background: linear-gradient(180deg, rgba(11,12,16,.88), rgba(11,12,16,.55));
     }
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+
+    /* ===== ロゴ ===== */
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+    }
     .logo{
-      width:38px;height:38px;border-radius:12px;
-      background: conic-gradient(from 200deg, var(--n), var(--a), var(--i), var(--m), var(--n));
-      box-shadow: 0 12px 34px rgba(0,0,0,.35);
-      border: 1px solid rgba(255,255,255,.08);
+      width:56px;
+      height:56px;
+      display:block;
+      background:transparent;
     }
     .title{
-      display:flex;flex-direction:column;line-height:1.05;
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
     }
-    .title b{font-size:18px;letter-spacing:.2px}
+    .title b{font-size:18px}
     .title span{font-size:12px;color:var(--muted)}
+
     .right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+
     .chip{
       display:inline-flex;align-items:center;gap:8px;
       padding:8px 10px;border-radius:999px;
@@ -76,6 +82,7 @@
       cursor:pointer;
     }
     .btn:hover{border-color:rgba(255,255,255,.16)}
+
     .hero{
       margin-top:16px;
       display:grid;
@@ -83,6 +90,7 @@
       gap:14px;
     }
     @media (max-width:900px){ .hero{grid-template-columns:1fr} }
+
     .panel{
       background:rgba(17,19,24,.7);
       border:1px solid rgba(255,255,255,.06);
@@ -90,22 +98,19 @@
       box-shadow: var(--shadow);
       overflow:hidden;
     }
-    .panel .p{
-      padding:14px 14px 10px;
-    }
+    .panel .p{padding:14px 14px 10px}
     h1{margin:0;font-size:26px}
     p{margin:8px 0 0;color:var(--muted)}
-    .tools{
-      display:flex;gap:10px;flex-wrap:wrap;margin-top:12px
-    }
+
+    .tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+
     .search{
       display:flex;gap:10px;align-items:center;
       padding:12px 14px 14px;
       border-top:1px solid rgba(255,255,255,.06);
       background:rgba(12,14,22,.55);
     }
-    input[type="search"]{
-      flex:1;
+    input[type="search"], select{
       padding:11px 12px;
       border-radius:12px;
       border:1px solid rgba(255,255,255,.08);
@@ -113,12 +118,8 @@
       color:var(--fg);
       outline:none;
     }
-    select{
-      padding:11px 10px;border-radius:12px;
-      border:1px solid rgba(255,255,255,.08);
-      background:#0e1020;color:var(--fg);
-      outline:none;
-    }
+    input[type="search"]{flex:1}
+
     .grid{
       margin-top:16px;
       display:grid;
@@ -136,6 +137,7 @@
       min-height:160px;
     }
     @media (max-width:860px){ .card{grid-column:span 12} }
+
     .thumb{
       width:168px;min-width:168px;
       background:#0e1020;
@@ -147,7 +149,9 @@
     }
     .thumb img{width:100%;height:100%;object-fit:cover;display:block}
     .thumb .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+
     .cbody{padding:12px 12px 10px;display:flex;flex-direction:column;gap:8px;flex:1}
+
     .meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
     .tag{
       font-size:11px;
@@ -157,248 +161,5 @@
       color:var(--muted);
     }
     .date{font-size:11px;color:var(--muted)}
-    .ctitle{
-      font-size:15px;
-      font-weight:750;
-      line-height:1.35;
-      margin:2px 0 0;
-    }
-    .linkrow{
-      margin-top:auto;
-      display:flex;gap:10px;flex-wrap:wrap;align-items:center;
-    }
-    .sitelink{
-      color:#9bdcff;text-decoration:none;font-weight:700;font-size:13px
-    }
-    .sitelink:hover{text-decoration:underline}
-    .small{font-size:12px;color:var(--muted);line-height:1.5}
-    footer{
-      margin-top:22px;
-      color:var(--muted);
-      font-size:12px;
-      display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
-      opacity:.9;
-    }
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;}
-  </style>
-</head>
 
-<body>
-  <div class="wrap">
-    <header>
-      <a class="brand" href="./">
-        <div class="title">
-          <b>ozbase</b>
-          <div class="top">
-  <img src="/assets/ozbase-logo.png" alt="ozbase" class="logo">
-</div>
-
-        </div>
-      </a>
-
-      <div class="right">
-        <span class="chip">引用: タイトル + サムネ + 元URL</span>
-        <a class="btn" href="./analysis.html">AI考察ページ（仮リンク）</a>
-      </div>
-    </header>
-
-    <section class="hero">
-      <div class="panel">
-        <div class="p">
-          <h1>今日の更新</h1>
-          <p>テック系記事を並べて、別ページで「AIによる今後の予想」を出す。ここは一覧の枠だけ。</p>
-          <div class="tools">
-            <span class="chip">NAIM + Microsoft など</span>
-            <span class="chip">日本語表示固定</span>
-            <span class="chip">元記事はリンクのみ</span>
-          </div>
-        </div>
-
-        <div class="search">
-          <input id="q" type="search" placeholder="検索（タイトル/サイト/タグ）" />
-          <select id="filter">
-            <option value="all">全部</option>
-            <option value="n">N</option>
-            <option value="a">A</option>
-            <option value="i">I</option>
-            <option value="m">M</option>
-            <option value="ms">Microsoft</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="panel">
-        <div class="p">
-          <h1>運用メモ（編集用）</h1>
-          <p class="small">
-            このファイルの <span class="mono">FEED</span> 配列をコピペで増やすだけで、フロント一覧が増える。<br/>
-            サムネは <span class="mono">thumb</span> にURLを入れる。無ければ空でOK。
-          </p>
-          <div class="tools">
-            <button class="btn" id="seed">サンプル3件に戻す</button>
-            <button class="btn" id="dump">今のJSONを表示</button>
-          </div>
-        </div>
-        <div class="search">
-          <span class="small">次は: RSS/取得自動化 or 記事個別ページ</span>
-        </div>
-      </div>
-    </section>
-
-    <main class="grid" id="grid"></main>
-
-    <footer>
-      <div>© <span id="y"></span> ozbase</div>
-      <div>※ 本文転載しない。タイトル/サムネ/URLのみ引用表記。</div>
-    </footer>
-  </div>
-
-<script>
-/**
- * ここだけ触ればOK（コピペ運用）
- * - id: 文字（ユニーク）
- * - title: 表示タイトル（引用タイトル）
- * - url: 元サイトURL
- * - site: サイト名（表示用）
- * - brand: "n"|"a"|"i"|"m"|"ms"|その他
- * - date: "2026-01-16" みたいに
- * - thumb: サムネURL（空ならプレースホルダ）
- * - note: 一覧に出す短い説明（任意）
- */
-const FEED_DEFAULT = [
-  {
-    id: "ex-1",
-    title: "N社の新発表まとめ（例）",
-    url: "https://example.com/n-article",
-    site: "N公式",
-    brand: "n",
-    date: "2026-01-16",
-    thumb: "",
-    note: "ここは短いメモ枠。AI考察は別ページへ。"
-  },
-  {
-    id: "ex-2",
-    title: "A社アップデート（例）",
-    url: "https://example.com/a-article",
-    site: "A公式",
-    brand: "a",
-    date: "2026-01-16",
-    thumb: "",
-    note: "リンクだけ。本文は載せない。"
-  },
-  {
-    id: "ex-3",
-    title: "Microsoft 更新情報（例）",
-    url: "https://example.com/ms-article",
-    site: "Microsoft",
-    brand: "ms",
-    date: "2026-01-16",
-    thumb: "",
-    note: "大手は必ずリンク。"
-  }
-];
-
-let FEED = loadFeed() ?? structuredClone(FEED_DEFAULT);
-
-function loadFeed(){
-  try{
-    const raw = localStorage.getItem("ozbase_feed");
-    return raw ? JSON.parse(raw) : null;
-  }catch(e){ return null; }
-}
-function saveFeed(){
-  localStorage.setItem("ozbase_feed", JSON.stringify(FEED));
-}
-
-const brandLabel = (b)=>{
-  if(b==="n") return "N";
-  if(b==="a") return "A";
-  if(b==="i") return "I";
-  if(b==="m") return "M";
-  if(b==="ms") return "Microsoft";
-  return "Other";
-};
-
-function render(){
-  const grid = document.getElementById("grid");
-  const q = document.getElementById("q").value.trim().toLowerCase();
-  const f = document.getElementById("filter").value;
-
-  const items = FEED.filter(x=>{
-    const hit =
-      !q ||
-      (x.title||"").toLowerCase().includes(q) ||
-      (x.site||"").toLowerCase().includes(q) ||
-      brandLabel(x.brand).toLowerCase().includes(q);
-    const ok = (f==="all") || (x.brand===f);
-    return hit && ok;
-  });
-
-  grid.innerHTML = items.map(cardHtml).join("");
-}
-
-function cardHtml(x){
-  const tag = brandLabel(x.brand);
-  const safeTitle = escapeHtml(x.title || "");
-  const safeSite  = escapeHtml(x.site || "");
-  const safeNote  = escapeHtml(x.note || "");
-  const safeDate  = escapeHtml(x.date || "");
-  const safeUrl   = x.url || "#";
-  const analysisUrl = "./analysis.html?id=" + encodeURIComponent(x.id);
-
-  const thumb = x.thumb ? `<img src="${x.thumb}" alt="">` : `<div class="ph">THUMB</div>`;
-
-  return `
-    <article class="card" data-id="${x.id}">
-      <div class="thumb">
-        ${thumb}
-      </div>
-      <div class="cbody">
-        <div class="meta">
-          <span class="tag">${tag}</span>
-          <span class="tag">${safeSite}</span>
-          <span class="date">${safeDate}</span>
-        </div>
-
-        <div class="ctitle">${safeTitle}</div>
-
-        ${safeNote ? `<div class="small">${safeNote}</div>` : ``}
-
-        <div class="linkrow">
-          <a class="sitelink" href="${safeUrl}" target="_blank" rel="noopener">元記事を開く</a>
-          <a class="btn" href="${analysisUrl}">AI考察（別ページ）</a>
-        </div>
-      </div>
-    </article>
-  `;
-}
-
-function escapeHtml(s){
-  return String(s)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-}
-
-// UI
-document.getElementById("q").addEventListener("input", render);
-document.getElementById("filter").addEventListener("change", render);
-
-document.getElementById("seed").addEventListener("click", ()=>{
-  FEED = structuredClone(FEED_DEFAULT);
-  saveFeed();
-  render();
-});
-
-document.getElementById("dump").addEventListener("click", ()=>{
-  alert(JSON.stringify(FEED, null, 2));
-});
-
-document.getElementById("y").textContent = new Date().getFullYear();
-
-render();
-</script>
-</body>
-</html>
+    .ctitle{font-size:15px;font-weight:750;li
