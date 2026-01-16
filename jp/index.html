@@ -51,21 +51,36 @@ a{color:#9bdcff;text-decoration:none}
 </div>
 
 <script>
-function run(){
-  const v=document.getElementById("in").value.trim();
-  document.getElementById("out").textContent =
-    v ? "（ダミー）自然で読みやすい文章に改善しました。" : "文章を入力してください。";
+async function run(){
+  const v = document.getElementById("in").value.trim();
+  if(!v){
+    document.getElementById("out").textContent = "文章を入力してください。";
+    return;
+  }
+
+  document.getElementById("out").textContent = "処理中…";
+
+  const res = await fetch("https://ozbase-ai.kgmw02.workers.dev/api/improve", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text: v, lang: "jp" })
+  });
+
+  const data = await res.json();
+  document.getElementById("out").textContent = data.output || "エラー";
 }
+
 function example(){
   document.getElementById("in").value="この文章をもっと自然にしてください。";
 }
+
 function copy(){
   const out=document.getElementById("out").textContent;
   navigator.clipboard.writeText(out);
 
   const b=document.getElementById("copyBtn");
   const old=b.textContent;
-  b.textContent="✓ コピー完了";
+  b.textContent="コピー完了";
   b.style.background="#16a34a";
   b.style.color="#fff";
 
