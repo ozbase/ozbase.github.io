@@ -1,8 +1,10 @@
+<!doctype html>
+<html lang="ja">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <!-- ブラウザのタイトル（タブ名） -->
+  <!-- ブラウザのタイトル -->
   <title>ozbase</title>
 
   <!-- タブのロゴ（favicon） -->
@@ -16,7 +18,6 @@
       --muted:#9aa0a6;
       --line:#1c2030;
       --chip:#14182a;
-
       --shadow: 0 18px 60px rgba(0,0,0,.35);
       --r: 16px;
     }
@@ -43,25 +44,11 @@
       background: linear-gradient(180deg, rgba(11,12,16,.88), rgba(11,12,16,.55));
     }
 
-    /* ===== ロゴ ===== */
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      text-decoration:none;
-    }
-    .logo{
-      width:88px;
-      height:88px;
-      display:block;
-      background:transparent;
-    }
-
-    /* タイトル文字は完全に非表示（見た目だけ） */
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .logo{width:88px;height:88px;display:block}
     .title{display:none}
 
     .right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
-
     .chip{
       display:inline-flex;align-items:center;gap:8px;
       padding:8px 10px;border-radius:999px;
@@ -81,6 +68,105 @@
       font-size:13px;
       cursor:pointer;
     }
-    .btn:hover{border-color:rgba(255,255,255,.16)}
+
+    .hero{margin-top:16px;display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}}
+
+    .panel{
+      background:rgba(17,19,24,.7);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:var(--r);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .panel .p{padding:14px 14px 10px}
+    h1{margin:0;font-size:26px}
+    p{margin:8px 0 0;color:var(--muted)}
+
+    .tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .search{
+      display:flex;gap:10px;align-items:center;
+      padding:12px 14px 14px;
+      border-top:1px solid rgba(255,255,255,.06);
+      background:rgba(12,14,22,.55);
+    }
+    input[type="search"], select{
+      padding:11px 12px;border-radius:12px;
+      border:1px solid rgba(255,255,255,.08);
+      background:#0e1020;color:var(--fg);outline:none;
+    }
+    input[type="search"]{flex:1}
+
+    .grid{margin-top:16px;display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+    .card{
+      grid-column:span 6;
+      background:rgba(17,19,24,.72);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:var(--r);
+      overflow:hidden;box-shadow:var(--shadow);
+      display:flex;min-height:160px;
+    }
+    @media (max-width:860px){.card{grid-column:span 12}}
+
+    footer{
+      margin-top:22px;color:var(--muted);font-size:12px;
+      display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;opacity:.9;
+    }
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
   </style>
 </head>
+
+<body>
+<div class="wrap">
+
+<header>
+  <a class="brand" href="./">
+    <img src="/assets/ozbase-logo.png" alt="ozbase" class="logo">
+  </a>
+  <div class="right">
+    <span class="chip">引用: タイトル + サムネ + 元URL</span>
+    <a class="btn" href="./analysis.html">AI考察ページ（仮リンク）</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="panel">
+    <div class="p">
+      <h1>今日の更新</h1>
+      <p>テック系記事を並べて、別ページでAI考察を出す。ここは一覧だけ。</p>
+      <div class="tools">
+        <span class="chip">NVIDIA / AMD / Intel</span>
+        <span class="chip">日本語表示固定</span>
+        <span class="chip">元記事はリンクのみ</span>
+      </div>
+    </div>
+    <div class="search">
+      <input type="search" placeholder="検索（タイトル/サイト/タグ）">
+      <select>
+        <option>全部</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="p">
+      <h1>運用メモ</h1>
+      <p class="mono">このHTMLを直接編集して追加</p>
+    </div>
+  </div>
+</section>
+
+<main class="grid"></main>
+
+<footer>
+  <div>© <span id="y"></span> ozbase</div>
+  <div>※ 本文転載なし。タイトル/サムネ/URLのみ。</div>
+</footer>
+
+</div>
+
+<script>
+document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
