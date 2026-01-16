@@ -60,14 +60,15 @@ async function run(){
 
   document.getElementById("out").textContent = "処理中…";
 
-  const res = await fetch("https://ozbase-ai.kgmw02.workers.dev/api/improve", {
+  const res = await fetch("https://ozbase-ai.kgmw02.workers.dev/?q=" + encodeURIComponent(v));
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ text: v, lang: "jp" })
   });
 
   const data = await res.json();
-  document.getElementById("out").textContent = data.output || "エラー";
+  document.getElementById("out").textContent = data.text || "エラー";
+
 }
 
 function example(){
