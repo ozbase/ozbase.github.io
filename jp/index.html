@@ -63,7 +63,6 @@ async function run(){
   const res = await fetch(
   "https://ozbase-ai.kgmw02.workers.dev/?q=" + encodeURIComponent(v)
 );
-
 const data = await res.json();
 document.getElementById("out").textContent = data.text || "エラー";
 ;
