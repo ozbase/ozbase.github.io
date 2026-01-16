@@ -162,4 +162,92 @@
     }
     .date{font-size:11px;color:var(--muted)}
 
-    .ctitle{font-size:15px;font-weight:750;li
+    .ctitle{font-size:15px;font-weight:750;line-height:1.35}
+    .linkrow{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .sitelink{color:#9bdcff;text-decoration:none;font-weight:700;font-size:13px}
+    .sitelink:hover{text-decoration:underline}
+    .small{font-size:12px;color:var(--muted);line-height:1.5}
+
+    footer{
+      margin-top:22px;
+      color:var(--muted);
+      font-size:12px;
+      display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+      opacity:.9;
+    }
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;}
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+<header>
+  <a class="brand" href="./">
+    <img src="/assets/ozbase-logo.png" alt="ozbase" class="logo">
+    <div class="title">
+      <b>ozbase</b>
+    </div>
+  </a>
+
+  <div class="right">
+    <span class="chip">引用: タイトル + サムネ + 元URL</span>
+    <a class="btn" href="./analysis.html">AI考察ページ（仮リンク）</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="panel">
+    <div class="p">
+      <h1>今日の更新</h1>
+      <p>テック系記事を並べて、別ページで「AIによる今後の予想」を出す。ここは一覧の枠だけ。</p>
+      <div class="tools">
+        <span class="chip">NAIM + Microsoft など</span>
+        <span class="chip">日本語表示固定</span>
+        <span class="chip">元記事はリンクのみ</span>
+      </div>
+    </div>
+
+    <div class="search">
+      <input id="q" type="search" placeholder="検索（タイトル/サイト/タグ）">
+      <select id="filter">
+        <option value="all">全部</option>
+        <option value="n">N</option>
+        <option value="a">A</option>
+        <option value="i">I</option>
+        <option value="m">M</option>
+        <option value="ms">Microsoft</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="p">
+      <h1>運用メモ（編集用）</h1>
+      <p class="small">
+        このファイルの <span class="mono">FEED</span> 配列をコピペで増やすだけで、フロント一覧が増える。
+      </p>
+      <div class="tools">
+        <button class="btn" id="seed">サンプル3件に戻す</button>
+        <button class="btn" id="dump">今のJSONを表示</button>
+      </div>
+    </div>
+    <div class="search">
+      <span class="small">次は: RSS/取得自動化 or 記事個別ページ</span>
+    </div>
+  </div>
+</section>
+
+<main class="grid" id="grid"></main>
+
+<footer>
+  <div>© <span id="y"></span> ozbase</div>
+  <div>※ 本文転載しない。タイトル/サムネ/URLのみ引用表記。</div>
+</footer>
+</div>
+
+<script>
+/* JS部分は元のまま */
+document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
