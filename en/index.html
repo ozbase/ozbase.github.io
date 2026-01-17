@@ -1,73 +1,69 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ozbase</title>
+<link rel="icon" href="/assets/ozbase-icon.png" type="image/png">
 
-  <title>ozbase</title>
+<style>
+:root{--bg:#0b0c10;--card:#111318;--fg:#e8e8ea;--muted:#9aa0a6;--line:#1c2030;--chip:#14182a;--shadow:0 18px 60px rgba(0,0,0,.35);--r:16px}
+*{box-sizing:border-box}
+body{
+margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif;color:var(--fg);
+background:
+radial-gradient(1200px 600px at 20% -10%, rgba(34,197,94,.18), transparent 55%),
+radial-gradient(1200px 600px at 80% -10%, rgba(239,68,68,.16), transparent 55%),
+radial-gradient(900px 500px at 85% 30%, rgba(59,130,246,.16), transparent 60%),
+radial-gradient(900px 500px at 20% 35%, rgba(168,85,247,.14), transparent 60%),
+linear-gradient(180deg,#0b0c10,#0f1220);
+}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:22px 16px 56px}
 
-  <!-- favicon -->
-  <link rel="icon" href="/assets/ozbase-icon.png" type="image/png">
+header{display:flex;flex-direction:column;align-items:center;gap:12px;position:sticky;top:0;z-index:10;padding:14px 0;backdrop-filter:blur(10px);background:linear-gradient(180deg,rgba(11,12,16,.88),rgba(11,12,16,.55));}
+.brand{display:flex;justify-content:center;text-decoration:none}
+.logo{width:160px;height:auto;display:block}
+.title{display:none}
+.right{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;background:rgba(20,24,42,.8);border:1px solid rgba(255,255,255,.06);color:var(--muted);font-size:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:999px;text-decoration:none;border:1px solid rgba(255,255,255,.08);background:rgba(17,19,24,.55);color:var(--fg);font-weight:650;font-size:13px}
 
-  <style>
-    :root{--bg:#0b0c10;--card:#111318;--fg:#e8e8ea;--muted:#9aa0a6;--line:#1c2030;--chip:#14182a;--shadow:0 18px 60px rgba(0,0,0,.35);--r:16px}
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif;
-      color:var(--fg);
-      background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(34,197,94,.18), transparent 55%),
-        radial-gradient(1200px 600px at 80% -10%, rgba(239,68,68,.16), transparent 55%),
-        radial-gradient(900px 500px at 85% 30%, rgba(59,130,246,.16), transparent 60%),
-        radial-gradient(900px 500px at 20% 35%, rgba(168,85,247,.14), transparent 60%),
-        linear-gradient(180deg,#0b0c10,#0f1220);
-    }
-    a{color:inherit}
-    .wrap{max-width:1080px;margin:0 auto;padding:22px 16px 56px}
+.hero{margin-top:16px;display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}}
 
-    header{display:flex;flex-direction:column;align-items:center;gap:12px;position:sticky;top:0;z-index:10;padding:14px 0;backdrop-filter:blur(10px);background:linear-gradient(180deg,rgba(11,12,16,.88),rgba(11,12,16,.55));}
+.panel{background:rgba(17,19,24,.7);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.panel .p{padding:14px}
+h1{margin:0;font-size:26px}
+p{margin:8px 0 0;color:var(--muted)}
 
-    .brand{display:flex;align-items:center;justify-content:center;text-decoration:none}
-    .logo{width:160px;height:auto;display:block}
-    .title{display:none}
+.grid{margin-top:16px;display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+.card{grid-column:span 6;background:rgba(17,19,24,.72);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);display:flex;overflow:hidden;box-shadow:var(--shadow)}
+@media(max-width:860px){.card{grid-column:span 12}}
 
-    .right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center}
-    .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;background:rgba(20,24,42,.8);border:1px solid rgba(255,255,255,.06);color:var(--muted);font-size:12px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:999px;text-decoration:none;border:1px solid rgba(255,255,255,.08);background:rgba(17,19,24,.55);color:var(--fg);font-weight:650;font-size:13px;cursor:pointer}
+.thumb{width:168px;min-width:168px;background:#0e1020;display:flex;align-items:center;justify-content:center;color:#555;font-weight:700}
+.cbody{padding:12px;display:flex;flex-direction:column;gap:8px}
+.meta{display:flex;gap:8px;flex-wrap:wrap}
+.tag{font-size:11px;padding:5px 9px;border-radius:999px;background:rgba(20,24,42,.85);border:1px solid rgba(255,255,255,.06);color:var(--muted)}
+.date{font-size:11px;color:var(--muted)}
+.ctitle{font-size:15px;font-weight:750}
+.small{font-size:12px;color:var(--muted);line-height:1.5}
+.linkrow{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap}
+.sitelink{color:#9bdcff;text-decoration:none;font-weight:700;font-size:13px}
+.sitelink:hover{text-decoration:underline}
 
-    .hero{margin-top:16px;display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
-    @media (max-width:900px){.hero{grid-template-columns:1fr}}
-
-    .panel{background:rgba(17,19,24,.7);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
-    .panel .p{padding:14px 14px 10px}
-    h1{margin:0;font-size:26px}
-    p{margin:8px 0 0;color:var(--muted)}
-
-    .tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-    .search{display:flex;gap:10px;align-items:center;padding:12px 14px 14px;border-top:1px solid rgba(255,255,255,.06);background:rgba(12,14,22,.55)}
-    input[type="search"],select{padding:11px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#0e1020;color:var(--fg);outline:none}
-    input[type="search"]{flex:1}
-
-    .grid{margin-top:16px;display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
-    .card{grid-column:span 6;background:rgba(17,19,24,.72);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);display:flex;min-height:160px}
-    @media (max-width:860px){.card{grid-column:span 12}}
-
-    footer{margin-top:22px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;opacity:.9}
-    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-  </style>
+footer{margin-top:22px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;opacity:.9}
+</style>
 </head>
 
 <body>
 <div class="wrap">
 
 <header>
-  <a class="brand" href="./">
-    <img src="/assets/ozbase-logo.png" alt="ozbase" class="logo">
-  </a>
+  <a class="brand" href="./"><img src="/assets/ozbase-logo.png" alt="ozbase" class="logo"></a>
   <div class="right">
-    <span class="chip">Source: title + thumbnail + original URL</span>
-    <a class="btn" href="./analysis.html">AI analysis (placeholder)</a>
+    <span class="chip">Source: title + thumbnail + URL only</span>
+    <a class="btn" href="./analysis.html">AI analysis</a>
   </div>
 </header>
 
@@ -75,40 +71,56 @@
   <div class="panel">
     <div class="p">
       <h1>Latest updates</h1>
-      <p>Tech news list only. AI insights and future outlook are published on a separate page.</p>
-      <div class="tools">
-        <span class="chip">NVIDIA / AMD / Intel</span>
-        <span class="chip">English only</span>
-        <span class="chip">No article reprint</span>
-      </div>
-    </div>
-    <div class="search">
-      <input type="search" placeholder="Search (title / site / tag)">
-      <select>
-        <option>All</option>
-      </select>
+      <p>Curated tech news. No reprints. AI insights on a separate page.</p>
     </div>
   </div>
-
   <div class="panel">
     <div class="p">
       <h1>Notes</h1>
-      <p class="mono">Add entries by editing this HTML directly.</p>
+      <p>English-only operation. JP is for testing.</p>
     </div>
   </div>
 </section>
 
-<main class="grid"></main>
+<main class="grid">
+  <article class="card">
+    <div class="thumb">THUMB</div>
+    <div class="cbody">
+      <div class="meta"><span class="tag">CPU</span><span class="tag">Intel</span><span class="date">2026-01-17</span></div>
+      <div class="ctitle">Intel updates desktop CPU roadmap</div>
+      <div class="small">What changed and who benefits.</div>
+      <div class="linkrow"><a class="sitelink" href="#" target="_blank">Source</a><a class="sitelink" href="./analysis.html">AI analysis</a></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="thumb">THUMB</div>
+    <div class="cbody">
+      <div class="meta"><span class="tag">GPU</span><span class="tag">NVIDIA</span><span class="date">2026-01-17</span></div>
+      <div class="ctitle">NVIDIA releases new driver highlights</div>
+      <div class="small">Key improvements and caveats.</div>
+      <div class="linkrow"><a class="sitelink" href="#" target="_blank">Source</a><a class="sitelink" href="./analysis.html">AI analysis</a></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="thumb">THUMB</div>
+    <div class="cbody">
+      <div class="meta"><span class="tag">Memory</span><span class="tag">Market</span><span class="date">2026-01-17</span></div>
+      <div class="ctitle">DRAM pricing trend update</div>
+      <div class="small">Impact on builders and servers.</div>
+      <div class="linkrow"><a class="sitelink" href="#" target="_blank">Source</a><a class="sitelink" href="./analysis.html">AI analysis</a></div>
+    </div>
+  </article>
+</main>
 
 <footer>
   <div>© <span id="y"></span> ozbase</div>
-  <div>No content reprint. Title / thumbnail / URL only.</div>
+  <div>No article text reprinted.</div>
 </footer>
 
 </div>
 
-<script>
-document.getElementById("y").textContent = new Date().getFullYear();
-</script>
+<script>document.getElementById("y").textContent=new Date().getFullYear();</script>
 </body>
 </html>
