@@ -6,7 +6,7 @@
 <title>ozbase</title>
 <link rel="icon" href="/assets/ozbase-icon.png" type="image/png">
 <style>
-:root{--bg:#0b0c10;--card:#111318;--fg:#e8e8ea;--muted:#9aa0a6;--line:#1c2030;--chip:#14182a;--shadow:0 18px 60px rgba(0,0,0,.35);--r:16px}
+:root{--fg:#e8e8ea;--muted:#9aa0a6;--shadow:0 18px 60px rgba(0,0,0,.35);--r:16px}
 *{box-sizing:border-box}
 body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif;color:var(--fg);background:linear-gradient(180deg,#0b0c10,#0f1220)}
 a{color:inherit;text-decoration:none}
@@ -16,16 +16,16 @@ header{display:flex;flex-direction:column;align-items:center;gap:12px;position:s
 .brand{display:flex;justify-content:center}
 .logo{width:160px;height:auto;display:block}
 .right{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.chip{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;background:rgba(20,24,42,.8);border:1px solid rgba(255,255,255,.06);color:var(--muted);font-size:12px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.08);background:rgba(17,19,24,.55);color:var(--fg);font-weight:650;font-size:13px}
+.chip{padding:8px 10px;border-radius:999px;background:rgba(20,24,42,.8);border:1px solid rgba(255,255,255,.06);color:var(--muted);font-size:12px}
+.btn{padding:9px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.08);background:rgba(17,19,24,.55);font-size:13px}
 
 main{margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
 .card{background:rgba(17,19,24,.72);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}
 .card h2{margin:0 0 8px;font-size:18px}
 .card p{margin:0;color:var(--muted);font-size:13px}
-.card .src{margin-top:10px;font-size:12px;color:#8ab4f8}
+.src{margin-top:10px;font-size:12px;color:#8ab4f8}
 
-footer{margin-top:32px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;opacity:.9}
+footer{margin-top:32px;color:var(--muted);font-size:12px}
 </style>
 </head>
 
@@ -45,38 +45,34 @@ footer{margin-top:32px;color:var(--muted);font-size:12px;display:flex;justify-co
 <main>
   <div class="card">
     <h2>NVIDIA announces new GPU roadmap</h2>
-    <p>Short AI-oriented summary will be written on analysis page.</p>
+    <p>AI analysis is published on a separate page.</p>
     <div class="src">
-      Source:
-      <a href="https://www.nvidia.com" target="_blank" rel="noopener">https://www.nvidia.com</a>
+      <a href="https://www.nvidia.com" target="_blank">https://www.nvidia.com</a>
     </div>
   </div>
 
   <div class="card">
     <h2>AMD reveals next-gen CPU architecture</h2>
-    <p>Practical impact and expected issues will be discussed separately.</p>
+    <p>Only title and source are listed here.</p>
     <div class="src">
-      Source:
-      <a href="https://www.amd.com" target="_blank" rel="noopener">https://www.amd.com</a>
+      <a href="https://www.amd.com" target="_blank">https://www.amd.com</a>
     </div>
   </div>
 
   <div class="card">
-    <h2>Intel updates manufacturing process strategy</h2>
-    <p>Only title, thumbnail, and link are listed here.</p>
+    <h2>Intel updates manufacturing strategy</h2>
+    <p>No article text is reproduced.</p>
     <div class="src">
-      Source:
-      <a href="https://www.intel.com" target="_blank" rel="noopener">https://www.intel.com</a>
+      <a href="https://www.intel.com" target="_blank">https://www.intel.com</a>
     </div>
   </div>
 </main>
 
 <footer>
-  <div>© <span id="y"></span> ozbase</div>
+  © <span id="y"></span> ozbase
 </footer>
 
 </div>
-
 <script>document.getElementById("y").textContent=new Date().getFullYear()</script>
 </body>
 </html>
