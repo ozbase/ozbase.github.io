@@ -1,79 +1,114 @@
 <!doctype html>
 <html lang="en">
-<meta charset="utf-8">
-<title>ozbase</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-:root{--bg:#0b0c10;--card:#111318;--fg:#e8e8ea;--muted:#9aa0a6;--acc:#6ee7ff}
-*{box-sizing:border-box}
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-  background:linear-gradient(180deg,#0b0c10,#0f1220);
-  color:var(--fg);max-width:760px;margin:32px auto;padding:0 16px}
-h1{font-size:28px;margin:8px 0}
-p{color:var(--muted)}
-.card{background:var(--card);border:1px solid #1c2030;border-radius:14px;padding:14px;margin-top:14px}
-textarea{width:100%;height:140px;background:#0e1020;color:var(--fg);
-  border:1px solid #22264a;border-radius:10px;padding:10px}
-.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-button{padding:10px 14px;border-radius:10px;border:0;
-  background:linear-gradient(135deg,#6ee7ff,#8b5cf6);color:#081018;
-  font-weight:700;cursor:pointer}
-button.sub{background:#1a1d3a;color:#cfd4ff}
-.out{min-height:96px;background:#0e1020;border:1px dashed #2a2f66;border-radius:12px;padding:10px}
-.top{display:flex;justify-content:space-between;align-items:center}
-.badge{font-size:12px;color:#9bdcff}
-a{color:#9bdcff;text-decoration:none}
-</style>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-<div class="top">
-  <div class="badge">AI text improver (preview)</div>
-  <div><a href="/jp/">JP</a> | <a href="/en/">EN</a></div>
-</div>
+  <title>ozbase</title>
 
-<h1>ozbase</h1>
-<p>Paste your text and click Improve.</p>
+  <!-- favicon -->
+  <link rel="icon" href="/assets/ozbase-icon.png" type="image/png">
 
-<div class="card">
-  <textarea id="in" placeholder="Paste text here"></textarea>
-  <div class="row" style="margin-top:10px">
-    <button onclick="run()">Improve</button>
-    <button class="sub" onclick="example()">Example</button>
-    <span class="badge">Free · Dummy</span>
+  <style>
+    :root{--bg:#0b0c10;--card:#111318;--fg:#e8e8ea;--muted:#9aa0a6;--line:#1c2030;--chip:#14182a;--shadow:0 18px 60px rgba(0,0,0,.35);--r:16px}
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif;
+      color:var(--fg);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(34,197,94,.18), transparent 55%),
+        radial-gradient(1200px 600px at 80% -10%, rgba(239,68,68,.16), transparent 55%),
+        radial-gradient(900px 500px at 85% 30%, rgba(59,130,246,.16), transparent 60%),
+        radial-gradient(900px 500px at 20% 35%, rgba(168,85,247,.14), transparent 60%),
+        linear-gradient(180deg,#0b0c10,#0f1220);
+    }
+    a{color:inherit}
+    .wrap{max-width:1080px;margin:0 auto;padding:22px 16px 56px}
+
+    header{display:flex;flex-direction:column;align-items:center;gap:12px;position:sticky;top:0;z-index:10;padding:14px 0;backdrop-filter:blur(10px);background:linear-gradient(180deg,rgba(11,12,16,.88),rgba(11,12,16,.55));}
+
+    .brand{display:flex;align-items:center;justify-content:center;text-decoration:none}
+    .logo{width:160px;height:auto;display:block}
+    .title{display:none}
+
+    .right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;background:rgba(20,24,42,.8);border:1px solid rgba(255,255,255,.06);color:var(--muted);font-size:12px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:999px;text-decoration:none;border:1px solid rgba(255,255,255,.08);background:rgba(17,19,24,.55);color:var(--fg);font-weight:650;font-size:13px;cursor:pointer}
+
+    .hero{margin-top:16px;display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}}
+
+    .panel{background:rgba(17,19,24,.7);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+    .panel .p{padding:14px 14px 10px}
+    h1{margin:0;font-size:26px}
+    p{margin:8px 0 0;color:var(--muted)}
+
+    .tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .search{display:flex;gap:10px;align-items:center;padding:12px 14px 14px;border-top:1px solid rgba(255,255,255,.06);background:rgba(12,14,22,.55)}
+    input[type="search"],select{padding:11px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#0e1020;color:var(--fg);outline:none}
+    input[type="search"]{flex:1}
+
+    .grid{margin-top:16px;display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+    .card{grid-column:span 6;background:rgba(17,19,24,.72);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);display:flex;min-height:160px}
+    @media (max-width:860px){.card{grid-column:span 12}}
+
+    footer{margin-top:22px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;opacity:.9}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header>
+  <a class="brand" href="./">
+    <img src="/assets/ozbase-logo.png" alt="ozbase" class="logo">
+  </a>
+  <div class="right">
+    <span class="chip">Source: title + thumbnail + original URL</span>
+    <a class="btn" href="./analysis.html">AI analysis (placeholder)</a>
   </div>
-</div>
+</header>
 
-<div class="card">
-  <div class="row" style="justify-content:space-between">
-    <strong>Result</strong>
-    <button class="sub" id="copyBtn" onclick="copy()">Copy</button>
+<section class="hero">
+  <div class="panel">
+    <div class="p">
+      <h1>Latest updates</h1>
+      <p>Tech news list only. AI insights and future outlook are published on a separate page.</p>
+      <div class="tools">
+        <span class="chip">NVIDIA / AMD / Intel</span>
+        <span class="chip">English only</span>
+        <span class="chip">No article reprint</span>
+      </div>
+    </div>
+    <div class="search">
+      <input type="search" placeholder="Search (title / site / tag)">
+      <select>
+        <option>All</option>
+      </select>
+    </div>
   </div>
-  <div class="out" id="out">Result will appear here</div>
+
+  <div class="panel">
+    <div class="p">
+      <h1>Notes</h1>
+      <p class="mono">Add entries by editing this HTML directly.</p>
+    </div>
+  </div>
+</section>
+
+<main class="grid"></main>
+
+<footer>
+  <div>© <span id="y"></span> ozbase</div>
+  <div>No content reprint. Title / thumbnail / URL only.</div>
+</footer>
+
 </div>
 
 <script>
-function run(){
-  const v=document.getElementById("in").value.trim();
-  document.getElementById("out").textContent =
-    v ? "(Dummy) Improved and easier to read." : "Please enter some text.";
-}
-function example(){
-  document.getElementById("in").value="Please make this text sound more natural.";
-}
-function copy(){
-  const out=document.getElementById("out").textContent;
-  navigator.clipboard.writeText(out);
-
-  const b=document.getElementById("copyBtn");
-  const old=b.textContent;
-  b.textContent="✓ Copied";
-  b.style.background="#16a34a";
-  b.style.color="#fff";
-
-  setTimeout(()=>{
-    b.textContent=old;
-    b.style.background="#1a1d3a";
-    b.style.color="#cfd4ff";
-  },1200);
-}
+document.getElementById("y").textContent = new Date().getFullYear();
 </script>
+</body>
 </html>
