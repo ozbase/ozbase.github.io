@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Introducing the Raspberry Pi AI HAT+ 2: Generative AI on Raspberry Pi 5</title>
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://ozbase.github.io/a/20260118-1433.html">
+<style>
+:root{--bg:#0b0c10;--fg:#e8e8ea;--muted:#9aa0a6;--link:#8ab4f8}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif;line-height:1.7}
+a{color:var(--link);text-decoration:none}
+header{position:relative;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.08);text-align:center}
+header img{height:32px}
+.back{position:absolute;right:16px;top:50%;transform:translateY(-50%);
+padding:6px 10px;border-radius:999px;background:rgba(20,24,42,.8);
+border:1px solid rgba(255,255,255,.08);font-size:13px;color:var(--fg)}
+main{max-width:920px;margin:0 auto;padding:24px 16px 64px}
+main img{display:block;max-width:720px;width:100%;max-height:480px;object-fit:cover;margin:20px auto;border-radius:14px}
+.src{color:var(--muted);font-size:13px;margin-bottom:20px}
+footer{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);
+color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/"><img src="/assets/ozbase-logo.png" alt="ozbase"></a>
+  <a href="/" class="back">← Back to Top</a>
+</header>
+
+<main>
+<h1>Introducing the Raspberry Pi AI HAT+ 2: Generative AI on Raspberry Pi 5</h1>
+
+<p class="src">
+Source:
+<a href="https://www.raspberrypi.com/news/introducing-the-raspberry-pi-ai-hat-plus-2-generative-ai-on-raspberry-pi-5/" target="_blank" rel="nofollow noopener">https://www.raspberrypi.com/news/introducing-the-raspberry-pi-ai-hat-plus-2-generative-ai-on-raspberry-pi-5/</a>
+</p>
+
+
+<img src="https://www.raspberrypi.com/app/uploads/2026/01/AI-HAT-2-top-lo-res-1024x686.jpg" alt="">
+
+<h2>AI Analysis</h2>
+<p>
+The Raspberry Pi AI HAT+ 2 is best understood as “a local AI coprocessor with its own memory.” The headline specs matter because they change what’s practical on a Pi 5: a Hailo-10H accelerator rated at 40 TOPS (INT4) plus 8GB of dedicated on-board RAM means small LLMs and VLMs can run fully offline, with low latency and without shipping data to the cloud. :contentReference[oaicite:3]{index=3}
+
+What it’s optimal for (LLM-minded use cases):
+1) Privacy-first assistants: on-device Q&A for household or workplace routines where voice/text should not leave the network (e.g., local helpdesk, home assistant “brain,” kiosk guide). The value is not “smartest model,” but “always available + private.” :contentReference[oaicite:4]{index=4}
+2) “Chat over a small dataset”: local chat that focuses on your own constrained documents/logs/manuals (RAG-style workflows), where a smaller model is good enough and the constraint is a feature, not a bug. :contentReference[oaicite:5]{index=5}
+3) Vision-language at the edge: camera stream descriptions, simple scene Q&A, and monitoring that works even with no internet. This is where Pi’s camera stack integration plus the accelerator makes sense. :contentReference[oaicite:6]{index=6}
+4) Translation / field tools: lightweight translation and text utilities in places with bad connectivity (workshops, events, factories, farms). :contentReference[oaicite:7]{index=7}
+
+The honest constraint: this is not a cloud-LLM replacement. Raspberry Pi itself notes cloud LLMs are orders of magnitude larger, while edge models that fit on the AI HAT+ 2 are typically in the ~1–7B parameter range, so you trade broad knowledge for “good-enough” task capability. :contentReference[oaicite:8]{index=8}
+
+The smart strategy is specialization: fine-tune for your job. The AI HAT+ 2 supports LoRA-style adaptation so you can bias a small model toward your specific domain (your product, your SOPs, your vocabulary) instead of trying to brute-force a huge model. :contentReference[oaicite:9]{index=9}
+
+In short: AI HAT+ 2 is ideal when your priority is offline reliability, privacy, and predictable latency, and your workflow can be shaped around smaller, purpose-built models rather than one giant general model.
+</p>
+
+<footer>
+  <div>© 2026 ozbase</div>
+  <div><a href="/privacy.html">Privacy Policy</a></div>
+</footer>
+</main>
+
+</body>
+</html>
