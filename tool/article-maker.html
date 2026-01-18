@@ -125,9 +125,7 @@ Source:
 ${imgBlock}
 
 <h2>AI Analysis</h2>
-<p>
-${a2.replace(/\\n/g,"<br>")}
-</p>
+${a2.trim().split(/\n\s*\n/).map(p=>`<p>${p.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}</p>`).join("")}
 
 <footer>
   <div>© ${y} ozbase</div>
