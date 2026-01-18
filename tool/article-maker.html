@@ -22,7 +22,7 @@ hr{margin:24px 0}
 <label>元記事URL</label>
 <input id="source">
 
-<label>サムネイル画像URL</label>
+<label>サムネイル画像URL（無ければ空）</label>
 <input id="thumb">
 
 <label>考察文</label>
@@ -61,6 +61,10 @@ function generate(){
   fileName=`${y}${m}${day}-${h}${min}.html`;
   document.getElementById("filename").textContent="a/"+fileName;
 
+  const imgBlock = th ? `
+
+<img src="${th}" alt="" style="max-width:100%;">` : ``;
+
   articleHTML=`<!doctype html>
 <html lang="en">
 <head>
@@ -78,8 +82,7 @@ Source:
 ${s}
 </a>
 </p>
-
-<img src="${th}" alt="" style="max-width:100%;">
+${imgBlock}
 
 <h2>AI Analysis</h2>
 <p>
@@ -89,11 +92,19 @@ ${a.replace(/\\n/g,"<br>")}
 </body>
 </html>`;
 
+  const thumbCard = th ? `
+  <img src="${th}" alt="" style="width:100%;border-radius:12px;margin-bottom:8px;">` : ``;
+
   cardHTML=`<div class="card">
-  <h2>${t}</h2>
+${thumbCard}
+  <h2>
+    <a href="/a/${fileName}">
+      ${t}
+    </a>
+  </h2>
   <p>AI analysis is published on a separate page.</p>
   <div class="src">
-    <a href="/a/${fileName}">${s}</a>
+    <a href="${s}" target="_blank">${s}</a>
   </div>
 </div>`;
 
