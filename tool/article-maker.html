@@ -16,26 +16,30 @@ button { font-size:16px; }
 <h1>記事作成ツール（手入力用）</h1>
 
 <label>記事タイトル</label>
-<input id="title" placeholder="例：中国国産DRAMの切り札、CXMTがIPO準備">
+<input id="title">
 
 <label>元記事URL</label>
-<input id="source" placeholder="https://">
+<input id="source">
 
-<label>サムネイル画像URL（コピペ）</label>
-<input id="thumb" placeholder="https://">
+<label>サムネイル画像URL</label>
+<input id="thumb">
 
 <label>考察文（AI／手動どちらでも）</label>
-<textarea id="analysis" placeholder="ここに考察を書く"></textarea>
+<textarea id="analysis"></textarea>
 
-<button onclick="generate()">HTMLを生成する</button>
+<button onclick="generate()">HTMLを生成</button>
+<button onclick="download()">/a/ に保存（ダウンロード）</button>
 
 <h2>生成されるファイル名</h2>
 <code id="filename"></code>
 
-<h2>生成されたHTML（全部コピー）</h2>
+<h2>生成されたHTML</h2>
 <code id="output"></code>
 
 <script>
+let generatedHTML = "";
+let generatedName = "";
+
 function generate(){
   const t = document.getElementById("title").value;
   const s = document.getElementById("source").value;
@@ -49,10 +53,10 @@ function generate(){
   const h = String(d.getHours()).padStart(2,"0");
   const min = String(d.getMinutes()).padStart(2,"0");
 
-  const fname = `${y}${m}${day}-${h}${min}.html`;
-  document.getElementById("filename").textContent = "a/" + fname;
+  generatedName = `${y}${m}${day}-${h}${min}.html`;
+  document.getElementById("filename").textContent = "a/" + generatedName;
 
-  const html = `<!doctype html>
+  generatedHTML = `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -80,7 +84,23 @@ ${a.replace(/\n/g,"<br>")}
 </body>
 </html>`;
 
-  document.getElementById("output").textContent = html;
+  document.getElementById("output").textContent = generatedHTML;
+}
+
+function download(){
+  if(!generatedHTML){
+    alert("先にHTMLを生成してください");
+    return;
+  }
+  const blob = new Blob([generatedHTML], {type: "text/html"});
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = generatedName;
+  a.click();
+
+  URL.revokeObjectURL(url);
 }
 </script>
 
