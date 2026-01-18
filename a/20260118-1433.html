@@ -44,19 +44,24 @@ Source:
 
 <h2>AI Analysis</h2>
 <p>
-The Raspberry Pi AI HAT+ 2 is best understood as “a local AI coprocessor with its own memory.” The headline specs matter because they change what’s practical on a Pi 5: a Hailo-10H accelerator rated at 40 TOPS (INT4) plus 8GB of dedicated on-board RAM means small LLMs and VLMs can run fully offline, with low latency and without shipping data to the cloud. :contentReference[oaicite:3]{index=3}
+The Raspberry Pi AI HAT+ 2 is best understood as “a local AI coprocessor with its own memory.” The headline specs matter because they change what’s practical on a Pi 5.
+
+A Hailo-10H accelerator rated at 40 TOPS (INT4), combined with 8GB of dedicated on-board RAM, means small LLMs and VLMs can run fully offline, with low latency and without shipping data to the cloud.
 
 What it’s optimal for (LLM-minded use cases):
-1) Privacy-first assistants: on-device Q&A for household or workplace routines where voice/text should not leave the network (e.g., local helpdesk, home assistant “brain,” kiosk guide). The value is not “smartest model,” but “always available + private.” :contentReference[oaicite:4]{index=4}
-2) “Chat over a small dataset”: local chat that focuses on your own constrained documents/logs/manuals (RAG-style workflows), where a smaller model is good enough and the constraint is a feature, not a bug. :contentReference[oaicite:5]{index=5}
-3) Vision-language at the edge: camera stream descriptions, simple scene Q&A, and monitoring that works even with no internet. This is where Pi’s camera stack integration plus the accelerator makes sense. :contentReference[oaicite:6]{index=6}
-4) Translation / field tools: lightweight translation and text utilities in places with bad connectivity (workshops, events, factories, farms). :contentReference[oaicite:7]{index=7}
 
-The honest constraint: this is not a cloud-LLM replacement. Raspberry Pi itself notes cloud LLMs are orders of magnitude larger, while edge models that fit on the AI HAT+ 2 are typically in the ~1–7B parameter range, so you trade broad knowledge for “good-enough” task capability. :contentReference[oaicite:8]{index=8}
+1) Privacy-first assistants: on-device Q&A for household or workplace routines where voice and text should not leave the local network.
 
-The smart strategy is specialization: fine-tune for your job. The AI HAT+ 2 supports LoRA-style adaptation so you can bias a small model toward your specific domain (your product, your SOPs, your vocabulary) instead of trying to brute-force a huge model. :contentReference[oaicite:9]{index=9}
+2) “Chat over a small dataset”: local chat focused on constrained documents, logs, or manuals, where smaller models are not a limitation but an advantage.
 
-In short: AI HAT+ 2 is ideal when your priority is offline reliability, privacy, and predictable latency, and your workflow can be shaped around smaller, purpose-built models rather than one giant general model.
+3) Vision-language at the edge: camera stream descriptions, simple scene Q&A, and monitoring that works even without an internet connection.
+
+4) Translation and field tools: lightweight translation and text utilities for workshops, events, factories, and farms with poor connectivity.
+
+The honest constraint is that this is not a cloud-LLM replacement. Models that fit on the AI HAT+ 2 are typically in the 1–7B parameter range, trading broad general knowledge for task-focused capability.
+
+In short, the AI HAT+ 2 makes sense when offline reliability, privacy, and predictable latency matter more than raw model size.
+
 </p>
 
 <footer>
