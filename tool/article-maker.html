@@ -135,7 +135,9 @@ ${a.replace(/\\n/g,"<br>")}
 </html>`;
 
   const thumbCard = th ? `
-  <img src="${th}" alt="" style="width:100%;border-radius:12px;margin-bottom:8px;">` : ``;
+  <a href="/a/${fileName}">
+    <img src="${th}" alt="" style="width:100%;border-radius:12px;margin-bottom:8px;">
+  </a>` : ``;
 
   cardHTML=`<div class="card">
 ${thumbCard}
