@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <title>OZBASE 記事作成ツール</title>
 <style>
-body { font-family: system-ui, sans-serif; max-width: 800px; margin: 20px auto; }
-input, textarea, button { width: 100%; margin: 8px 0; padding: 8px; }
-textarea { height: 140px; }
-code { background:#f5f5f5; display:block; padding:10px; white-space:pre-wrap; }
-button { font-size:16px; }
+body{font-family:system-ui,sans-serif;max-width:900px;margin:20px auto}
+input,textarea,button{width:100%;margin:8px 0;padding:8px}
+textarea{height:120px}
+code{background:#f5f5f5;display:block;padding:10px;white-space:pre-wrap}
+button{font-size:16px}
+hr{margin:24px 0}
 </style>
 </head>
 <body>
@@ -24,39 +25,43 @@ button { font-size:16px; }
 <label>サムネイル画像URL</label>
 <input id="thumb">
 
-<label>考察文（AI／手動どちらでも）</label>
+<label>考察文</label>
 <textarea id="analysis"></textarea>
 
 <button onclick="generate()">HTMLを生成</button>
 <button onclick="download()">/a/ に保存（ダウンロード）</button>
 
+<hr>
+
 <h2>生成されるファイル名</h2>
 <code id="filename"></code>
 
-<h2>生成されたHTML</h2>
-<code id="output"></code>
+<h2>記事HTML（/a/ 用）</h2>
+<code id="articleHtml"></code>
+
+<h2>トップ用カードHTML（index.html に貼る）</h2>
+<code id="cardHtml"></code>
 
 <script>
-let generatedHTML = "";
-let generatedName = "";
+let articleHTML="", fileName="", cardHTML="";
 
 function generate(){
-  const t = document.getElementById("title").value;
-  const s = document.getElementById("source").value;
-  const th = document.getElementById("thumb").value;
-  const a = document.getElementById("analysis").value;
+  const t=document.getElementById("title").value;
+  const s=document.getElementById("source").value;
+  const th=document.getElementById("thumb").value;
+  const a=document.getElementById("analysis").value;
 
-  const d = new Date();
-  const y = d.getFullYear();
-  const m = String(d.getMonth()+1).padStart(2,"0");
-  const day = String(d.getDate()).padStart(2,"0");
-  const h = String(d.getHours()).padStart(2,"0");
-  const min = String(d.getMinutes()).padStart(2,"0");
+  const d=new Date();
+  const y=d.getFullYear();
+  const m=String(d.getMonth()+1).padStart(2,"0");
+  const day=String(d.getDate()).padStart(2,"0");
+  const h=String(d.getHours()).padStart(2,"0");
+  const min=String(d.getMinutes()).padStart(2,"0");
 
-  generatedName = `${y}${m}${day}-${h}${min}.html`;
-  document.getElementById("filename").textContent = "a/" + generatedName;
+  fileName=`${y}${m}${day}-${h}${min}.html`;
+  document.getElementById("filename").textContent="a/"+fileName;
 
-  generatedHTML = `<!doctype html>
+  articleHTML=`<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -78,28 +83,32 @@ ${s}
 
 <h2>AI Analysis</h2>
 <p>
-${a.replace(/\n/g,"<br>")}
+${a.replace(/\\n/g,"<br>")}
 </p>
 
 </body>
 </html>`;
 
-  document.getElementById("output").textContent = generatedHTML;
+  cardHTML=`<div class="card">
+  <h2>${t}</h2>
+  <p>AI analysis is published on a separate page.</p>
+  <div class="src">
+    <a href="/a/${fileName}">${s}</a>
+  </div>
+</div>`;
+
+  document.getElementById("articleHtml").textContent=articleHTML;
+  document.getElementById("cardHtml").textContent=cardHTML;
 }
 
 function download(){
-  if(!generatedHTML){
-    alert("先にHTMLを生成してください");
-    return;
-  }
-  const blob = new Blob([generatedHTML], {type: "text/html"});
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = generatedName;
+  if(!articleHTML){alert("先にHTMLを生成してください");return;}
+  const blob=new Blob([articleHTML],{type:"text/html"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download=fileName;
   a.click();
-
   URL.revokeObjectURL(url);
 }
 </script>
