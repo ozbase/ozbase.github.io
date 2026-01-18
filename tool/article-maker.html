@@ -1,37 +1,38 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
 <meta charset="utf-8">
-<title>OZBASE Article Maker</title>
+<title>OZBASE 記事作成ツール</title>
 <style>
 body { font-family: system-ui, sans-serif; max-width: 800px; margin: 20px auto; }
 input, textarea, button { width: 100%; margin: 8px 0; padding: 8px; }
 textarea { height: 140px; }
 code { background:#f5f5f5; display:block; padding:10px; white-space:pre-wrap; }
+button { font-size:16px; }
 </style>
 </head>
 <body>
 
-<h1>Article Maker (Manual)</h1>
+<h1>記事作成ツール（手入力用）</h1>
 
-<label>Article Title</label>
-<input id="title">
+<label>記事タイトル</label>
+<input id="title" placeholder="例：中国国産DRAMの切り札、CXMTがIPO準備">
 
-<label>Source URL</label>
-<input id="source">
+<label>元記事URL</label>
+<input id="source" placeholder="https://">
 
-<label>Thumbnail URL (copy & paste)</label>
-<input id="thumb">
+<label>サムネイル画像URL（コピペ）</label>
+<input id="thumb" placeholder="https://">
 
-<label>AI / Manual Analysis</label>
-<textarea id="analysis"></textarea>
+<label>考察文（AI／手動どちらでも）</label>
+<textarea id="analysis" placeholder="ここに考察を書く"></textarea>
 
-<button onclick="generate()">Generate HTML</button>
+<button onclick="generate()">HTMLを生成する</button>
 
-<h2>Filename</h2>
+<h2>生成されるファイル名</h2>
 <code id="filename"></code>
 
-<h2>Generated HTML (copy all)</h2>
+<h2>生成されたHTML（全部コピー）</h2>
 <code id="output"></code>
 
 <script>
