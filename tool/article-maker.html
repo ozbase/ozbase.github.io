@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>OZBASE Article Maker</title>
+<style>
+body { font-family: system-ui, sans-serif; max-width: 800px; margin: 20px auto; }
+input, textarea, button { width: 100%; margin: 8px 0; padding: 8px; }
+textarea { height: 140px; }
+code { background:#f5f5f5; display:block; padding:10px; white-space:pre-wrap; }
+</style>
+</head>
+<body>
+
+<h1>Article Maker (Manual)</h1>
+
+<label>Article Title</label>
+<input id="title">
+
+<label>Source URL</label>
+<input id="source">
+
+<label>Thumbnail URL (copy & paste)</label>
+<input id="thumb">
+
+<label>AI / Manual Analysis</label>
+<textarea id="analysis"></textarea>
+
+<button onclick="generate()">Generate HTML</button>
+
+<h2>Filename</h2>
+<code id="filename"></code>
+
+<h2>Generated HTML (copy all)</h2>
+<code id="output"></code>
+
+<script>
+function generate(){
+  const t = document.getElementById("title").value;
+  const s = document.getElementById("source").value;
+  const th = document.getElementById("thumb").value;
+  const a = document.getElementById("analysis").value;
+
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,"0");
+  const day = String(d.getDate()).padStart(2,"0");
+  const h = String(d.getHours()).padStart(2,"0");
+  const min = String(d.getMinutes()).padStart(2,"0");
+
+  const fname = `${y}${m}${day}-${h}${min}.html`;
+  document.getElementById("filename").textContent = "a/" + fname;
+
+  const html = `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>${t}</title>
+<meta name="robots" content="index,follow">
+</head>
+<body>
+
+<h1>${t}</h1>
+
+<p>
+Source:
+<a href="${s}" target="_blank" rel="nofollow noopener">
+${s}
+</a>
+</p>
+
+<img src="${th}" alt="" style="max-width:100%;">
+
+<h2>AI Analysis</h2>
+<p>
+${a.replace(/\n/g,"<br>")}
+</p>
+
+</body>
+</html>`;
+
+  document.getElementById("output").textContent = html;
+}
+</script>
+
+</body>
+</html>
