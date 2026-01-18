@@ -55,11 +55,18 @@ hr{margin:24px 0}
 <script>
 let articleHTML="", fileName="", cardHTML="";
 
+function clean(x){
+  return (x||"")
+    .replace(/:contentReference\\[[^\\]]*\\]\\{[^\\}]*\\}/g,"")
+    .replace(/```/g,"")
+    .trim();
+}
+
 function generate(){
-  const t=document.getElementById("title").value;
-  const s=document.getElementById("source").value;
-  const th=document.getElementById("thumb").value;
-  const a=document.getElementById("analysis").value;
+  const t2 = clean(document.getElementById("title").value);
+  const s2 = clean(document.getElementById("source").value);
+  const th2 = clean(document.getElementById("thumb").value);
+  const a2 = clean(document.getElementById("analysis").value);
 
   const d=new Date();
   const y=d.getFullYear();
@@ -71,28 +78,27 @@ function generate(){
   fileName=`${y}${m}${day}-${h}${min}.html`;
   document.getElementById("filename").textContent="a/"+fileName;
 
-  const imgBlock = th ? `
-<img src="${th}" alt="">` : ``;
+  const imgBlock = th2 ? `
+<img src="${th2}" alt="">` : ``;
 
   articleHTML=`<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${t}</title>
+<title>${t2}</title>
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://ozbase.github.io/a/${fileName}">
 <style>
-:root{
-  --bg:#0b0c10;--fg:#e8e8ea;--muted:#9aa0a6;--link:#8ab4f8;
-}
+:root{--bg:#0b0c10;--fg:#e8e8ea;--muted:#9aa0a6;--link:#8ab4f8}
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--fg);
 font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif;line-height:1.7}
 a{color:var(--link);text-decoration:none}
 header{position:relative;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.08);text-align:center}
-header img{height:28px}
-.back{position:absolute;left:16px;top:50%;transform:translateY(-50%);padding:6px 10px;border-radius:999px;background:rgba(20,24,42,.8);border:1px solid rgba(255,255,255,.08);font-size:13px;color:var(--fg)}
+header img{height:32px}
+.back{position:absolute;right:16px;top:50%;transform:translateY(-50%);
+padding:6px 10px;border-radius:999px;background:rgba(20,24,42,.8);
 border:1px solid rgba(255,255,255,.08);font-size:13px;color:var(--fg)}
 main{max-width:920px;margin:0 auto;padding:24px 16px 64px}
 img{display:block;max-width:100%;margin:20px 0;border-radius:14px}
@@ -109,18 +115,18 @@ color:var(--muted);font-size:12px}
 </header>
 
 <main>
-<h1>${t}</h1>
+<h1>${t2}</h1>
 
 <p class="src">
 Source:
-<a href="${s}" target="_blank" rel="nofollow noopener">${s}</a>
+<a href="${s2}" target="_blank" rel="nofollow noopener">${s2}</a>
 </p>
 
 ${imgBlock}
 
 <h2>AI Analysis</h2>
 <p>
-${a.replace(/\\n/g,"<br>")}
+${a2.replace(/\\n/g,"<br>")}
 </p>
 
 <footer>
@@ -132,15 +138,15 @@ ${a.replace(/\\n/g,"<br>")}
 </body>
 </html>`;
 
-  const thumbCard = th ? `
-  <a href="/a/${fileName}"><img src="${th}" alt="" style="width:100%;border-radius:12px;margin-bottom:8px;"></a>` : ``;
+  const thumbCard = th2 ? `
+  <a href="/a/${fileName}"><img src="${th2}" alt="" style="width:100%;border-radius:12px;margin-bottom:8px;"></a>` : ``;
 
   cardHTML=`<div class="card">
 ${thumbCard}
-  <h2><a href="/a/${fileName}">${t}</a></h2>
+  <h2><a href="/a/${fileName}">${t2}</a></h2>
   <p>AI analysis is published on a separate page.</p>
   <div class="src">
-    <a href="${s}" target="_blank">${s}</a>
+    <a href="${s2}" target="_blank">${s2}</a>
   </div>
 </div>`;
 
