@@ -47,6 +47,22 @@ crossorigin="anonymous"></script>
 </header>
 
 <main>
+
+  <!-- ===============================
+       ↓↓↓ 記事カードはここから ↓↓↓
+       1記事 = <div class="card"> を1ブロック追加
+       並び順 = 上にあるほど新しい
+       =============================== -->
+
+  <div class="card">
+  <h2>China’s largest domestic DRAM player, CXMT, preparing a massive IPO is less about short-term profits and more about long-term survival strategy.</h2>
+  <p>AI analysis is published on a separate page.</p>
+  <div class="src">
+    <a href="/a/20260118-1218.html">https://news.yahoo.co.jp/articles/c0deda2e224271437299ccecac3e3723bb0daf35</a>
+  </div>
+</div>
+
+  
   <div class="card">
     <h2>NVIDIA announces new GPU roadmap</h2>
     <p>AI analysis is published on a separate page.</p>
@@ -70,6 +86,11 @@ crossorigin="anonymous"></script>
       <a href="https://www.intel.com" target="_blank">https://www.intel.com</a>
     </div>
   </div>
+
+  <!-- ↑↑↑ 記事カードはここまで ↑↑↑
+       この下には何も書かない
+       =============================== -->
+
 </main>
 
 <footer>
@@ -78,13 +99,6 @@ crossorigin="anonymous"></script>
     <a href="/privacy.html">Privacy Policy</a>
   </div>
 </footer>
-<footer>
-  <div>© <span id="y"></span> ozbase</div>
-  <div>
-    <a href="/privacy.html">Privacy Policy</a>
-  </div>
-</footer>
-
 
 </div>
 <script>document.getElementById("y").textContent=new Date().getFullYear()</script>
