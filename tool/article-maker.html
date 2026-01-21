@@ -74,6 +74,7 @@ function generate(){
   const day=String(d.getDate()).padStart(2,"0");
   const h=String(d.getHours()).padStart(2,"0");
   const min=String(d.getMinutes()).padStart(2,"0");
+  const date = `${y}-${m}-${day}`;
 
   fileName=`${y}${m}${day}-${h}${min}.html`;
   document.getElementById("filename").textContent="a/"+fileName;
@@ -143,6 +144,7 @@ ${a2.trim().split(/\n\s*\n/).map(p=>`<p>${p.replace(/&/g,"&amp;").replace(/</g,"
 ${thumbCard}
   <h2><a href="/a/${fileName}">${t2}</a></h2>
   <p>AI analysis is published on a separate page.</p>
+  <div class="date">${date}</div>
   <div class="src">
     <a href="${s2}" target="_blank">${s2}</a>
   </div>
