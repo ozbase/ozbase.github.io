@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to Use Local AI Subtitles in OBS with LocalVocal</title>
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://ozbase.github.io/a/20260127-2204.html">
+<style>
+:root{--bg:#0b0c10;--fg:#e8e8ea;--muted:#9aa0a6;--link:#8ab4f8}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif;line-height:1.7}
+a{color:var(--link);text-decoration:none}
+header{position:relative;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.08);text-align:center}
+header img{height:32px}
+.back{position:absolute;right:16px;top:50%;transform:translateY(-50%);
+padding:6px 10px;border-radius:999px;background:rgba(20,24,42,.8);
+border:1px solid rgba(255,255,255,.08);font-size:13px;color:var(--fg)}
+main{max-width:920px;margin:0 auto;padding:24px 16px 64px}
+main img{display:block;max-width:720px;width:100%;max-height:480px;object-fit:cover;margin:20px auto;border-radius:14px}
+.src{color:var(--muted);font-size:13px;margin-bottom:20px}
+footer{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);
+color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/"><img src="/assets/ozbase-logo.png" alt="ozbase"></a>
+  <a href="/" class="back">← Back to Top</a>
+</header>
+
+<main>
+<h1>How to Use Local AI Subtitles in OBS with LocalVocal</h1>
+
+<p class="src">
+Source:
+<a href="https://pc.watch.impress.co.jp/docs/topic/special/2071231.html" target="_blank" rel="nofollow noopener">https://pc.watch.impress.co.jp/docs/topic/special/2071231.html</a>
+</p>
+
+
+<img src="https://asset.watch.impress.co.jp/img/pcw/docs/2071/231/ai01_l.jpg" alt="">
+
+<h2>AI Analysis</h2>
+<p>What Is LocalVocal for OBS
+LocalVocal is an OBS filter plugin that captures audio from a microphone or other audio sources and converts speech into text in real time.</p><p>Its core features include:</p><p>- Live speech-to-text captions
+- Real-time translation into another language
+- Multi-language support
+- Text output for post-stream editing
+- Offline operation after setup</p><p>Because processing happens locally, LocalVocal is well suited for long streaming sessions and international audiences.</p><p>---</p><p>## How Local AI Captioning Works
+LocalVocal uses open-source machine learning models such as Whisper-based speech recognition engines and local translation frameworks.</p><p>The typical pipeline is:</p><p>Audio Input  
+→ Speech Recognition Model  
+→ Optional Translation Model  
+→ Text Output to OBS Scene  </p><p>Acceleration via CUDA or other hardware backends can significantly improve performance, though CPU-only operation is also possible.</p><p>---</p><p>## Installing LocalVocal in OBS</p><p>1. Download the LocalVocal plugin package.
+2. Install it into the OBS plugins directory or run the provided installer.
+3. Restart OBS Studio.
+4. Confirm that “LocalVocal” appears in the audio filter list.</p><p>Some versions will also download language models automatically on first launch.</p><p>---</p><p>## Adding Subtitles to a Scene</p><p>To display captions on screen:</p><p>1. Add a Text (GDI+) or FreeType2 text source to the scene.
+2. Select the microphone or audio source in OBS.
+3. Open Filters for that audio source.
+4. Add the LocalVocal filter.
+5. Choose input language and transcription mode.
+6. Link the output to the subtitle text source.</p><p>Once enabled, spoken audio will begin appearing as captions in real time.</p><p>---</p><p>## Enabling Translation</p><p>LocalVocal can translate recognized speech into another language before displaying it.</p><p>Typical configuration steps:</p><p>- Set source language (for example, Japanese).
+- Enable translation mode.
+- Choose target language (such as English).
+- Adjust update frequency and caption formatting.</p><p>Multiple text sources can be used to show different languages simultaneously if supported by the plugin version.</p><p>---</p><p>## Saving Transcripts for Later Use
+In addition to on-screen captions, LocalVocal can export recognized speech to text files.</p><p>This is useful for:</p><p>- Creating subtitles for edited videos
+- Producing highlight clips
+- Generating scripts for blog posts
+- SEO optimization
+- Archiving streams</p><p>Saved transcripts reduce post-production time dramatically.</p><p>---</p><p>## Performance Considerations
+Running speech recognition locally consumes CPU or GPU resources.</p><p>Important points:</p><p>- GPU acceleration is strongly recommended for live gaming streams.
+- High-resolution models improve accuracy but increase load.
+- Translation adds additional compute cost.
+- Monitoring system usage during test recordings is advised.</p><p>Streamers should balance model size and performance to avoid dropped frames.</p><p>---</p><p>## Common Use Cases</p><p>LocalVocal is especially useful for:</p><p>- Long-form Twitch or YouTube streams
+- VTuber broadcasts
+- International audiences
+- Accessibility improvements
+- Offline recording environments</p><p>It enables professional captioning workflows without cloud dependencies.</p><p>---</p><p>## Conclusion
+OBS LocalVocal provides a practical way to add real-time captions and translations using fully local AI models.</p><p>By eliminating API limits and subscription fees, it allows creators to run continuous multilingual subtitle systems directly inside OBS, making it a powerful tool for streamers who want broader reach and faster post-production.</p>
+
+<footer>
+  <div>© 2026 ozbase</div>
+  <div><a href="/privacy.html">Privacy Policy</a></div>
+</footer>
+</main>
+
+</body>
+</html>
