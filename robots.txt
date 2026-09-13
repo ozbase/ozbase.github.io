@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ozbase.github.io/sitemap.xml
