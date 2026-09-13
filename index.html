@@ -55,7 +55,7 @@ const countries={
  nr:{name:'ナウル共和国',data:{bag:{text:'再利用バッグ可 ✅',sub:'使い捨てプラスチック買い物袋は禁止'},tip:{text:'基本不要 ❌'},water:{text:'一般的な水道網なし ⚠️',sub:'雨水・淡水化水を利用。地下水は飲用不可'},esc:U,train:{text:'旅客鉄道なし',sub:'旧鉄道はリン鉱石輸送用'},traffic:{text:'左側通行'},toilet:toilet('未確認 ⚠️','紙：未確認 ⚠️')}},
  na:{name:'ナルニア',fiction:true,extra:'馬車・船の描写あり',data:{bag:U,tip:U,water:U,esc:U,train:U,traffic:U,toilet:toilet('未確認 ⚠️','紙：未確認 ⚠️')}}
 };
-const order=['jp','kr','tw','cn','th','us','uk','fr','in','nr','na'];
+const order=['cn','fr','in','jp','kr','nr','na','tw','th','uk','us'];
 const c0=document.getElementById('c0'),c1=document.getElementById('c1'),c2=document.getElementById('c2'),c3=document.getElementById('c3');
 const compare=document.getElementById('compare'),q=document.getElementById('q'),search=document.getElementById('search');
 function fillSelect(sel,required){sel.textContent='';if(!required){const x=document.createElement('option');x.value='';x.textContent='選択しない';sel.appendChild(x)}for(const k of order){const c=countries[k],o=document.createElement('option');o.value=k;o.textContent=c.name+(c.fiction?'（架空）':'');sel.appendChild(o)}}
