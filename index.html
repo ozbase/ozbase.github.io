@@ -41,7 +41,7 @@ const rows=[
  {key:'toilet',label:'トイレ',hint:'紙の扱い・トイレ料金',query:'トイレットペーパー トイレ料金 有料 無料'}
 ];
 const U={text:'未確認 ⚠️',cls:'unknown'};
-const toilet=(text,sub='',fee='未確認 ⚠️')=>({text,sub:(sub?sub+' / ':'')+'トイレ料金：'+fee});
+const toilet=(text,sub='',fee='未確認 ⚠️')=>({text,sub:(sub?sub+'<br>':'')+'トイレ料金：'+fee});
 const countries={
  jp:{name:'日本',data:{bag:{text:'支払い後に使用 ✅',sub:'会計前の商品を自分の袋へ入れない'},tip:{text:'基本不要 ❌'},water:{text:'飲める・軟水が多い ✅'},esc:{text:'歩かず立ち止まるのが基本',sub:'慣習は関東で左、関西で右が多い ⚠️'},train:{text:'定刻運行が多い ✅'},traffic:{text:'左側通行'},toilet:toilet('紙は流す ✅','紙：流す','ほぼ無料 ✅')}},
  kr:{name:'韓国',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本不要 ❌',sub:'レストラン・タクシーとも通常不要'},water:{text:'飲用可能 ✅',sub:'市販水や浄水器を使う人も多い'},esc:{text:'歩かず立つのが公式推奨',sub:'実際は右に立ち左を空ける人も多い ⚠️'},train:{text:'鉄道は比較的定刻'},traffic:{text:'右側通行'},toilet:toilet('施設差あり ⚠️','紙：施設差あり','無料が多い ✅')}},
