@@ -44,15 +44,15 @@ const U={text:'未確認 ⚠️',cls:'unknown'};
 const toilet=(text,sub='',fee='未確認 ⚠️')=>({text,sub:(sub?sub+' / ':'')+'トイレ料金：'+fee});
 const countries={
  jp:{name:'日本',data:{bag:{text:'支払い後に使用 ✅',sub:'会計前の商品を自分の袋へ入れない'},tip:{text:'基本不要 ❌'},water:{text:'飲める・軟水が多い ✅'},esc:{text:'歩かず立ち止まるのが基本',sub:'慣習は関東で左、関西で右が多い ⚠️'},train:{text:'定刻運行が多い ✅'},traffic:{text:'左側通行'},toilet:toilet('紙は流す ✅','紙：流す','ほぼ無料 ✅')}},
- kr:{name:'韓国',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本不要 ❌'},water:{text:'飲用可能 ✅',sub:'市販水や浄水器を使う人も多い'},esc:U,train:{text:'鉄道は比較的定刻'},traffic:{text:'右側通行'},toilet:toilet('施設差あり ⚠️','紙：施設差あり','無料が多い ✅')}},
- tw:{name:'台湾',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本不要 ❌',sub:'高級店などはサービス料の場合あり'},water:{text:'そのままの飲用は避ける ⚠️',cls:'danger',sub:'沸騰・浄水・市販水を利用'},esc:U,train:{text:'鉄道は概ね時刻表運行'},traffic:{text:'右側通行'},toilet:toilet('施設差あり ⚠️','紙：流せる場所も増えている','無料が多い ✅')}},
- cn:{name:'中国',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本不要 ❌'},water:{text:'水道水の直接飲用は避ける ⚠️',cls:'danger'},esc:U,train:{text:'高速鉄道は比較的定刻'},traffic:{text:'右側通行'},toilet:toilet('施設差が大きい ⚠️','紙：施設差あり','無料が多い・私設は有料もある ⚠️')}},
- th:{name:'タイ',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'場面による ⚠️'},water:{text:'水道水の直接飲用は避ける ⚠️',cls:'danger'},esc:U,train:{text:'路線・列車により遅延あり ⚠️'},traffic:{text:'左側通行'},toilet:toilet('施設差あり ⚠️','紙：配管が弱い場所では流さない場合あり','場所による・有料あり ⚠️')}},
- us:{name:'アメリカ',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本必要 ⭕'},water:{text:'多くの地域で飲用可能 ✅'},esc:U,train:{text:'地域差が大きい ⚠️'},traffic:{text:'右側通行'},toilet:toilet('紙は流す ✅','紙：流す','無料が多い ⚠️')}},
- uk:{name:'イギリス',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'場面による ⚠️'},water:{text:'飲める ✅'},esc:U,train:{text:'時刻表運行だが遅延・運休あり ⚠️'},traffic:{text:'左側通行'},toilet:toilet('紙は流す ✅','紙：流す','無料が多い・有料もある ⚠️')}},
- fr:{name:'フランス',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'追加は任意'},water:{text:'飲める ✅'},esc:U,train:{text:'概ね時刻表運行'},traffic:{text:'右側通行'},toilet:toilet('紙は流す ✅','紙：流す','無料・有料が混在 ⚠️')}},
- in:{name:'インド',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'場面による ⭕'},water:{text:'水道水の直接飲用は避ける ⚠️',cls:'danger'},esc:U,train:{text:'遅延あり ⚠️'},traffic:{text:'左側通行'},toilet:toilet('施設差が大きい ⚠️','紙：流せない場所あり','場所による・有料あり ⚠️')}},
- nr:{name:'ナウル共和国',data:{bag:U,tip:U,water:U,esc:U,train:{text:'旅客鉄道は未確認 ⚠️',cls:'unknown'},traffic:{text:'左側通行'},toilet:toilet('未確認 ⚠️','紙：未確認 ⚠️')}},
+ kr:{name:'韓国',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本不要 ❌'},water:{text:'飲用可能 ✅',sub:'市販水や浄水器を使う人も多い'},esc:{text:'歩かず立つのが公式推奨',sub:'実際は右に立ち左を空ける人も多い ⚠️'},train:{text:'鉄道は比較的定刻'},traffic:{text:'右側通行'},toilet:toilet('施設差あり ⚠️','紙：施設差あり','無料が多い ✅')}},
+ tw:{name:'台湾',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本不要 ❌',sub:'高級店などはサービス料の場合あり'},water:{text:'そのままの飲用は避ける ⚠️',cls:'danger',sub:'沸騰・浄水・市販水を利用'},esc:{text:'両側に立ってOK ✅',sub:'歩かず手すりにつかまり立つのを推奨'},train:{text:'鉄道は概ね時刻表運行'},traffic:{text:'右側通行'},toilet:toilet('施設差あり ⚠️','紙：流せる場所も増えている','無料が多い ✅')}},
+ cn:{name:'中国',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本不要 ❌'},water:{text:'水道水の直接飲用は避ける ⚠️',cls:'danger'},esc:{text:'歩かず立つのを推奨',sub:'都市部で「片側を空ける」慣習から安全重視へ移行中 ⚠️'},train:{text:'高速鉄道は比較的定刻'},traffic:{text:'右側通行'},toilet:toilet('施設差が大きい ⚠️','紙：施設差あり','無料が多い・私設は有料もある ⚠️')}},
+ th:{name:'タイ',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'場面による ⚠️'},water:{text:'水道水の直接飲用は避ける ⚠️',cls:'danger'},esc:{text:'BTSでは右側を利用',sub:'手すりにつかまり安全優先 ⚠️'},train:{text:'路線・列車により遅延あり ⚠️'},traffic:{text:'左側通行'},toilet:toilet('施設差あり ⚠️','紙：配管が弱い場所では流さない場合あり','場所による・有料あり ⚠️')}},
+ us:{name:'アメリカ',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本必要 ⭕'},water:{text:'多くの地域で飲用可能 ✅'},esc:{text:'右に立ち左を空けることが多い',sub:'地域・施設差あり ⚠️'},train:{text:'地域差が大きい ⚠️'},traffic:{text:'右側通行'},toilet:toilet('紙は流す ✅','紙：流す','無料が多い ⚠️')}},
+ uk:{name:'イギリス',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'場面による ⚠️'},water:{text:'飲める ✅'},esc:{text:'右に立つ',sub:'ロンドン地下鉄では左側を歩行者用に空ける'},train:{text:'時刻表運行だが遅延・運休あり ⚠️'},traffic:{text:'左側通行'},toilet:toilet('紙は流す ✅','紙：流す','無料が多い・有料もある ⚠️')}},
+ fr:{name:'フランス',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'追加は任意'},water:{text:'飲める ✅'},esc:{text:'右に立ち左を空けることが多い',sub:'パリなど都市部の慣習 ⚠️'},train:{text:'概ね時刻表運行'},traffic:{text:'右側通行'},toilet:toilet('紙は流す ✅','紙：流す','無料・有料が混在 ⚠️')}},
+ in:{name:'インド',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'場面による ⭕'},water:{text:'水道水の直接飲用は避ける ⚠️',cls:'danger'},esc:{text:'左に立ち右を空ける',sub:'都市鉄道で案内あり・地域差あり ⚠️'},train:{text:'遅延あり ⚠️'},traffic:{text:'左側通行'},toilet:toilet('施設差が大きい ⚠️','紙：流せない場所あり','場所による・有料あり ⚠️')}},
+ nr:{name:'ナウル共和国',data:{bag:{text:'再利用バッグ可 ✅',sub:'使い捨てプラスチック買い物袋は禁止'},tip:{text:'基本不要 ❌'},water:{text:'一般的な水道網なし ⚠️',sub:'雨水・淡水化水を利用。地下水は飲用不可'},esc:U,train:{text:'旅客鉄道なし',sub:'旧鉄道はリン鉱石輸送用'},traffic:{text:'左側通行'},toilet:toilet('未確認 ⚠️','紙：未確認 ⚠️')}},
  na:{name:'ナルニア',fiction:true,extra:'馬車・船の描写あり',data:{bag:U,tip:U,water:U,esc:U,train:U,traffic:U,toilet:toilet('未確認 ⚠️','紙：未確認 ⚠️')}}
 };
 const order=['jp','kr','tw','cn','th','us','uk','fr','in','nr','na'];
