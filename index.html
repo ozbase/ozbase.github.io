@@ -85,7 +85,7 @@ const countries={
  nz:generic('ニュージーランド','左側通行','飲める地域が多い ✅'),
  na:{name:'ナルニア',fiction:true,extra:'馬車・船の描写あり',data:{bag:U,tip:U,water:U,esc:U,train:U,traffic:U,toilet:toilet('未確認 ⚠️','紙：未確認 ⚠️')}}
 };
-const safety=(level,night)=>({text:level,sub:'夜間外出：'+night});
+const safety=(level,night)=>({text:level,sub:'夜間外出：'+({ '〇':'安全 ✅','△':'注意 ⚠️','✕':'危険 🚨' }[night]||night)});
 const safetyData={
  us:safety('注意 ⚠️','△'),ae:safety('危険 🚨','✕'),uk:safety('注意 ⚠️','△'),it:safety('注意 ⚠️','△'),
  in:safety('注意 ⚠️','△'),id:safety('注意 ⚠️','△'),au:safety('安全 ✅','〇'),om:safety('危険 🚨','✕'),
