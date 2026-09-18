@@ -91,7 +91,15 @@ const countries={
  sg:{name:'シンガポール共和国',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本不要 ❌',sub:'一般的な習慣ではない・サービス料あり'},water:{text:'飲める ✅'},esc:{text:'左に立ち右を空けることが多い',sub:'歩かず立つ安全案内も確認 ⚠️'},train:{text:'MRT・LRTが主要交通',sub:'高頻度運行'},traffic:{text:'左側通行'},toilet:toilet('紙は流す ✅','紙：流す','無料が多い ⚠️')}},
  ch:{name:'スイス連邦',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本不要 ❌',sub:'任意で約10%・端数切上げの習慣あり'},water:{text:'飲める ✅'},esc:{text:'右に立ち左を空けることが多い'},train:{text:'時刻表運行が基本・鉄道網が充実'},traffic:{text:'右側通行'},toilet:toilet('紙は流す ✅','紙：流す','駅など有料あり・例 CHF1 ⚠️')}},
  nz:{name:'ニュージーランド',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本不要 ❌',sub:'良いサービスへのチップは任意'},water:{text:'飲める ✅'},esc:{text:'左に立ち右を空けることが多い',sub:'施設差あり ⚠️'},train:{text:'旅客鉄道は限定的',sub:'主要都市の通勤鉄道・観光列車中心 ⚠️'},traffic:{text:'左側通行'},toilet:toilet('紙は流す ✅','紙：流す','無料が多い ⚠️')}},
- na:{name:'ナルニア',fiction:true,extra:'馬車・船の描写あり',data:{bag:U,tip:U,water:U,esc:U,train:U,traffic:U,toilet:toilet('未確認 ⚠️','紙：未確認 ⚠️')}}
+ na:{name:'ナルニア',fiction:true,extra:'馬車・船の描写あり',data:{
+ bag:{text:'マイバッグ使用描写あり ✅',sub:'袋代わりに衣類を使う描写あり'},
+ tip:{text:'チップ文化の描写なし',sub:'独自通貨・市場は存在'},
+ water:{text:'水道設備の描写なし',sub:'川・井戸の水を飲む描写あり'},
+ esc:{text:'描写なし',sub:'存在しないものとして扱う'},
+ train:{text:'描写なし',sub:'存在しないものとして扱う'},
+ traffic:{text:'左右の規則は確認できず ⚠️',sub:'馬・馬車による道路移動あり'},
+ toilet:{text:'近代的トイレの描写なし',sub:'設備・紙・料金は作品から判定不能'}
+}}
 };
 const safety=(level,night)=>({text:level,sub:'夜間外出：'+({ '〇':'安全 ✅','△':'注意 ⚠️','✕':'危険 🚨' }[night]||night)});
 const safetyData={
@@ -133,6 +141,8 @@ const foodData={
  cn:food('中国料理','地域ごとの料理差が非常に大きい','北京ダック・餃子・火鍋')
 };
 for(const [k,v] of Object.entries(foodData))countries[k].data.food=v;
+countries.na.data.food=food('ナルニア料理','肉・小麦・蜂蜜・乳製品・果物など','作品内に多様な宴会・家庭料理');
+countries.na.data.safety={text:'時代により大きく変動 ⚠️',sub:'夜間外出：時代・地域による'};
 const order=['us','ae','uk','it','in','id','au','om','ca','sg','ch','es','th','tw','tr','de','nz','nr','na','jp','br','fr','mx','kr','ru','cn'];
 const c0=document.getElementById('c0'),c1=document.getElementById('c1'),c2=document.getElementById('c2'),c3=document.getElementById('c3');
 const compare=document.getElementById('compare'),q=document.getElementById('q'),search=document.getElementById('search');
