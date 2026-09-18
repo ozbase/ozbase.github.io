@@ -55,7 +55,7 @@ const rows=[
  {key:'safety',label:'治安',hint:'総合目安・夜間外出',query:'海外旅行 治安 夜間外出 最新情報'}
 ];
 const U={text:'未確認 ⚠️',cls:'unknown'};
-const toilet=(text,sub='',fee='未確認 ⚠️')=>({text,sub:(sub?sub+'<br>':'')+'トイレ料金：'+fee});
+const toilet=(text,sub='',fee='未確認 ⚠️')=>({text,sub:(sub?sub+'<br>':'')+'トイレ料金：'+fee,cls:(text.includes('未確認')||sub.includes('未確認')||fee.includes('未確認'))?'unknown':''});
 const generic=(name,traffic,water='未確認 ⚠️')=>({name,data:{bag:{text:'支払い後に使用 ✅'},tip:U,water:{text:water,cls:water.includes('避け')?'danger':''},esc:U,train:U,traffic:{text:traffic},toilet:toilet('未確認 ⚠️','紙：未確認 ⚠️')}});
 const countries={
  us:{name:'アメリカ',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本必要 ⭕',sub:'レストラン：15〜20%目安<br>ベッドメイク：$2〜5/泊'},water:{text:'多くの地域で飲用可能 ✅'},esc:{text:'右に立ち左を空けることが多い',sub:'地域・施設差あり ⚠️'},train:{text:'地域差が大きい ⚠️'},traffic:{text:'右側通行'},toilet:toilet('紙は流す ✅','紙：流す','無料が多い ⚠️')}},
@@ -68,12 +68,12 @@ const countries={
  jp:{name:'日本',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本不要 ❌'},water:{text:'飲める・軟水が多い ✅'},esc:{text:'歩かず立ち止まるのが基本',sub:'慣習は関東で左、関西で右が多い ⚠️'},train:{text:'定刻運行が多い ✅'},traffic:{text:'左側通行'},toilet:toilet('紙は流す ✅','紙：流す','ほぼ無料 ✅')}},
  fr:{name:'フランス',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'追加は任意'},water:{text:'飲める ✅'},esc:{text:'右に立ち左を空けることが多い'},train:{text:'概ね時刻表運行'},traffic:{text:'右側通行'},toilet:toilet('紙は流す ✅','紙：流す','無料・有料が混在 ⚠️')}},
  nr:{name:'ナウル共和国',data:{bag:{text:'再利用バッグ可 ✅'},tip:{text:'基本不要 ❌'},water:{text:'一般的な水道網なし ⚠️'},esc:U,train:{text:'旅客鉄道なし'},traffic:{text:'左側通行'},toilet:toilet('未確認 ⚠️','紙：未確認 ⚠️')}},
- au:generic('オーストラリア連邦','左側通行','飲用可能な地域が多い ✅'),
- ca:generic('カナダ','右側通行','飲用可能な地域が多い ✅'),
- br:generic('ブラジル連邦共和国','右側通行','地域差あり ⚠️'),
- es:generic('スペイン王国','右側通行','飲める地域が多い ✅'),
- ae:generic('アラブ首長国連邦','右側通行','水道水は飲用基準を満たすが市販水利用も多い ⚠️'),
- de:generic('ドイツ連邦共和国','右側通行','飲める ✅'),
+ au:{name:'オーストラリア連邦',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本不要 ❌',sub:'良いサービスは任意・高級店では10%程度も'},water:{text:'飲める地域が多い ✅'},esc:{text:'左に立ち右を空けることが多い',sub:'地域・施設差あり ⚠️'},train:{text:'都市・路線で差あり ⚠️'},traffic:{text:'左側通行'},toilet:toilet('紙は流す ✅','紙：流す','無料が多い ⚠️')}},
+ ca:{name:'カナダ',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本必要 ⭕',sub:'レストラン：15〜20%程度が一般的'},water:{text:'多くの地域で飲用可能 ✅'},esc:{text:'右に立ち左を空けることが多い',sub:'地域・施設差あり ⚠️'},train:{text:'都市・長距離で差が大きい ⚠️'},traffic:{text:'右側通行'},toilet:toilet('紙は流す ✅','紙：流す','無料が多い ⚠️')}},
+ br:{name:'ブラジル連邦共和国',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'場面による ⚠️',sub:'飲食店：約10%・サービス料込みの場合あり'},water:{text:'水道水の直接飲用は地域確認 ⚠️'},esc:{text:'右に立ち左を空けることが多い',sub:'地域差あり ⚠️'},train:{text:'都市鉄道中心・都市差あり ⚠️'},traffic:{text:'右側通行'},toilet:toilet('施設差あり ⚠️','紙：流さず備付け容器の場所あり','無料・有料が混在 ⚠️')}},
+ es:{name:'スペイン王国',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本不要 ❌',sub:'任意で5〜10%程度'},water:{text:'飲める地域が多い ✅'},esc:{text:'右に立ち左を空けることが多い',sub:'都市・施設差あり ⚠️'},train:{text:'高速鉄道網が充実・概ね時刻表運行'},traffic:{text:'右側通行'},toilet:toilet('紙は流す ✅','紙：流す','無料・有料が混在 ⚠️')}},
+ ae:{name:'アラブ首長国連邦',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'場面による ⚠️',sub:'義務ではない・良いサービスには任意'},water:{text:'飲用基準を満たすが市販水利用も多い ⚠️'},esc:{text:'右に立ち左を空けることが多い',sub:'施設差あり ⚠️'},train:{text:'ドバイ・アブダビ中心に都市交通',sub:'都市間旅客鉄道は限定的 ⚠️'},traffic:{text:'右側通行'},toilet:toilet('紙は流す施設が多い ✅','紙：施設表示を確認','無料が多い ⚠️')}},
+ de:{name:'ドイツ連邦共和国',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'場面による ⚠️',sub:'飲食店：約10%が一般的'},water:{text:'飲める ✅'},esc:{text:'右に立ち左を空けることが多い'},train:{text:'時刻表運行だが遅延あり ⚠️'},traffic:{text:'右側通行'},toilet:toilet('紙は流す ✅','紙：流す','有料も多い ⚠️')}},
  it:{name:'イタリア共和国',data:{
  bag:{text:'支払い後に使用 ✅'},
  tip:{text:'基本不要 ❌',sub:'満足した時は任意で追加・10%程度の習慣もある'},
@@ -81,16 +81,16 @@ const countries={
  esc:{text:'右側に立つ案内あり',sub:'都市・施設差あり ⚠️'},
  train:{text:'概ね時刻表運行 ⚠️',sub:'2026年：地域列車91%・Intercity 87.7%・高速79.6%が定時基準内'},
  traffic:{text:'右側通行'},
- toilet:toilet('未確認 ⚠️','紙：未確認 ⚠️')
+ toilet:toilet('紙は流す ✅','紙：流す','無料・有料が混在 ⚠️')
 }},
- ru:generic('ロシア連邦','右側通行','地域差あり ⚠️'),
- om:generic('オマーン国','右側通行','未確認 ⚠️'),
- mx:generic('メキシコ合衆国','右側通行','水道水の直接飲用は避ける ⚠️'),
- id:generic('インドネシア共和国','左側通行','水道水の直接飲用は避ける ⚠️'),
- tr:generic('トルコ共和国','右側通行','地域差あり ⚠️'),
- sg:generic('シンガポール共和国','左側通行','飲める ✅'),
- ch:generic('スイス連邦','右側通行','飲める ✅'),
- nz:generic('ニュージーランド','左側通行','飲める地域が多い ✅'),
+ ru:{name:'ロシア連邦',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'任意 ⚠️',sub:'飲食店では良いサービスに10%程度の例'},water:{text:'水道水の直接飲用は地域確認 ⚠️'},esc:{text:'右に立ち左を空けることが多い',sub:'都市・施設差あり ⚠️'},train:{text:'長距離・都市鉄道あり',sub:'路線差あり ⚠️'},traffic:{text:'右側通行'},toilet:toilet('施設差あり ⚠️','紙：施設表示を確認','有料もある ⚠️')}},
+ om:{name:'オマーン国',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本任意 ⚠️',sub:'ホテル・観光サービスでは渡すこともある'},water:{text:'市販の飲料水利用が無難 ⚠️'},esc:{text:'施設表示に従う ⚠️'},train:{text:'旅客鉄道なし'},traffic:{text:'右側通行'},toilet:toilet('施設差あり ⚠️','紙：施設表示を確認','場所による ⚠️')}},
+ mx:{name:'メキシコ合衆国',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本必要 ⭕',sub:'飲食店：10〜15%が習慣'},water:{text:'水道水の直接飲用は避ける ⚠️',cls:'danger'},esc:{text:'右に立ち左を空けることが多い',sub:'地域・施設差あり ⚠️'},train:{text:'都市・地域で差が大きい ⚠️'},traffic:{text:'右側通行'},toilet:toilet('施設差あり ⚠️','紙：流さない場所あり','有料もある ⚠️')}},
+ id:{name:'インドネシア共和国',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本任意 ⚠️',sub:'サービス料込みの店もある'},water:{text:'水道水の直接飲用は避ける ⚠️',cls:'danger'},esc:{text:'左に立ち右を空ける案内例あり',sub:'都市・施設差あり ⚠️'},train:{text:'路線・地域で差あり ⚠️'},traffic:{text:'左側通行'},toilet:toilet('施設差が大きい ⚠️','紙：流さない場所あり','場所による ⚠️')}},
+ tr:{name:'トルコ共和国',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'場面による ⚠️',sub:'飲食・ホテルで少額を渡すことがある'},water:{text:'飲用は地域・施設確認 ⚠️'},esc:{text:'右に立ち左を空けることが多い',sub:'都市・施設差あり ⚠️'},train:{text:'高速鉄道・都市鉄道あり',sub:'路線差あり ⚠️'},traffic:{text:'右側通行'},toilet:toilet('施設差あり ⚠️','紙：施設表示を確認','有料もある ⚠️')}},
+ sg:{name:'シンガポール共和国',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本不要 ❌',sub:'一般的な習慣ではない・サービス料あり'},water:{text:'飲める ✅'},esc:{text:'左に立ち右を空けることが多い',sub:'歩かず立つ安全案内も確認 ⚠️'},train:{text:'MRT・LRTが主要交通',sub:'高頻度運行'},traffic:{text:'左側通行'},toilet:toilet('紙は流す ✅','紙：流す','無料が多い ⚠️')}},
+ ch:{name:'スイス連邦',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本不要 ❌',sub:'任意で約10%・端数切上げの習慣あり'},water:{text:'飲める ✅'},esc:{text:'右に立ち左を空けることが多い'},train:{text:'時刻表運行が基本・鉄道網が充実'},traffic:{text:'右側通行'},toilet:toilet('紙は流す ✅','紙：流す','駅など有料あり・例 CHF1 ⚠️')}},
+ nz:{name:'ニュージーランド',data:{bag:{text:'支払い後に使用 ✅'},tip:{text:'基本不要 ❌',sub:'良いサービスへのチップは任意'},water:{text:'飲める ✅'},esc:{text:'左に立ち右を空けることが多い',sub:'施設差あり ⚠️'},train:{text:'旅客鉄道は限定的',sub:'主要都市の通勤鉄道・観光列車中心 ⚠️'},traffic:{text:'左側通行'},toilet:toilet('紙は流す ✅','紙：流す','無料が多い ⚠️')}},
  na:{name:'ナルニア',fiction:true,extra:'馬車・船の描写あり',data:{bag:U,tip:U,water:U,esc:U,train:U,traffic:U,toilet:toilet('未確認 ⚠️','紙：未確認 ⚠️')}}
 };
 const safety=(level,night)=>({text:level,sub:'夜間外出：'+({ '〇':'安全 ✅','△':'注意 ⚠️','✕':'危険 🚨' }[night]||night)});
