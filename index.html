@@ -4,7 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>旅先チェック 習慣早見表｜海外旅行の習慣・マナー比較</title>
-<meta name="description" content="旅先の習慣を国ごとに横並びで確認できる海外旅行向け早見表。国別のチップ相場、水道水、鉄道、交通側、トイレなどを比較できます。">
+<meta name="description" content="旅先の習慣を国ごとに横並びで確認できる海外旅行向け早見表。国別のチップ相場、水道水、鉄道、交通ルール、トイレ、食文化、治安などを比較できます。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="旅先チェック">
+<meta property="og:title" content="旅先チェック 習慣早見表">
+<meta property="og:description" content="国を選んで、旅先の習慣をかんたん比較。チップ相場、水道水、鉄道、交通ルール、トイレ、食文化、治安などを一覧で確認できます。">
+<meta property="og:url" content="https://ozbase.github.io/">
+<meta property="og:image" content="https://ozbase.github.io/ogp.png">
+<meta property="og:image:alt" content="旅先チェック 習慣早見表。国を選んで旅先の習慣を比較できる旅行向けサイト。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="旅先チェック 習慣早見表">
+<meta name="twitter:description" content="国を選んで、旅先の習慣をかんたん比較。チップ相場、水道水、鉄道、交通ルール、トイレ、食文化、治安などを一覧で確認。">
+<meta name="twitter:image" content="https://ozbase.github.io/ogp.png">
 <meta name="theme-color" content="#0b1020">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://ozbase.github.io/">
@@ -39,7 +50,9 @@ const rows=[
  {key:'esc',label:'エスカレーター',hint:'立ち方・歩行',query:'エスカレーター 立つ側'},
  {key:'train',label:'鉄道',hint:'時刻表どおり動くか',query:'鉄道 遅延 定時性'},
  {key:'traffic',label:'交通側',hint:'車が走る側',query:'左側通行 右側通行'},
- {key:'toilet',label:'トイレ',hint:'紙の扱い・トイレ料金',query:'トイレットペーパー トイレ料金 有料 無料'}
+ {key:'toilet',label:'トイレ',hint:'紙の扱い・トイレ料金',query:'トイレットペーパー トイレ料金 有料 無料'},
+ {key:'food',label:'食文化',hint:'食事で気をつけたい習慣',query:'食文化 食事 マナー 旅行'},
+ {key:'safety',label:'治安',hint:'旅行者向け注意点・最新情報確認',query:'海外旅行 治安 注意 最新情報'}
 ];
 const U={text:'未確認 ⚠️',cls:'unknown'};
 const toilet=(text,sub='',fee='未確認 ⚠️')=>({text,sub:(sub?sub+'<br>':'')+'トイレ料金：'+fee});
