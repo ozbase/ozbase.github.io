@@ -52,7 +52,7 @@ const rows=[
  {key:'traffic',label:'交通側',hint:'車が走る側',query:'左側通行 右側通行'},
  {key:'toilet',label:'トイレ',hint:'紙の扱い・トイレ料金',query:'トイレットペーパー トイレ料金 有料 無料'},
  {key:'food',label:'食文化',hint:'食事で気をつけたい習慣',query:'食文化 食事 マナー 旅行'},
- {key:'safety',label:'治安',hint:'旅行者向け注意点・最新情報確認',query:'海外旅行 治安 注意 最新情報'}
+ {key:'safety',label:'治安',hint:'総合目安・夜間外出',query:'海外旅行 治安 夜間外出 最新情報'}
 ];
 const U={text:'未確認 ⚠️',cls:'unknown'};
 const toilet=(text,sub='',fee='未確認 ⚠️')=>({text,sub:(sub?sub+'<br>':'')+'トイレ料金：'+fee});
@@ -85,6 +85,17 @@ const countries={
  nz:generic('ニュージーランド','左側通行','飲める地域が多い ✅'),
  na:{name:'ナルニア',fiction:true,extra:'馬車・船の描写あり',data:{bag:U,tip:U,water:U,esc:U,train:U,traffic:U,toilet:toilet('未確認 ⚠️','紙：未確認 ⚠️')}}
 };
+const safety=(level,night)=>({text:level,sub:'夜間外出：'+night});
+const safetyData={
+ us:safety('注意 ⚠️','△'),ae:safety('危険 🚨','✕'),uk:safety('注意 ⚠️','△'),it:safety('注意 ⚠️','△'),
+ in:safety('注意 ⚠️','△'),id:safety('注意 ⚠️','△'),au:safety('安全 ✅','〇'),om:safety('危険 🚨','✕'),
+ ca:safety('安全 ✅','〇'),sg:safety('安全 ✅','〇'),ch:safety('安全 ✅','〇'),es:safety('注意 ⚠️','△'),
+ th:safety('注意 ⚠️','△'),tw:safety('安全 ✅','〇'),tr:safety('注意 ⚠️','△'),de:safety('注意 ⚠️','△'),
+ nz:safety('安全 ✅','〇'),nr:safety('注意 ⚠️','△'),jp:safety('安全 ✅','〇'),br:safety('注意 ⚠️','✕'),
+ fr:safety('注意 ⚠️','△'),mx:safety('危険 🚨','✕'),kr:safety('安全 ✅','△'),ru:safety('危険 🚨','✕'),
+ cn:safety('注意 ⚠️','△')
+};
+for(const [k,v] of Object.entries(safetyData))countries[k].data.safety=v;
 const order=['us','ae','uk','it','in','id','au','om','ca','sg','ch','es','th','tw','tr','de','nz','nr','na','jp','br','fr','mx','kr','ru','cn'];
 const c0=document.getElementById('c0'),c1=document.getElementById('c1'),c2=document.getElementById('c2'),c3=document.getElementById('c3');
 const compare=document.getElementById('compare'),q=document.getElementById('q'),search=document.getElementById('search');
