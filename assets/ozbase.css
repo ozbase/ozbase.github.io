@@ -13,3 +13,7 @@
 .brand img{display:block;width:auto;height:44px;max-width:100%;object-fit:contain}
 .logo img{display:block;width:100%;height:auto;max-width:480px;margin:auto}
 @media(max-width:740px){.brand img{height:30px}nav .links{flex-wrap:wrap;justify-content:flex-end}}
+
+/* Keep anchor targets visible below the sticky site navigation */
+#works{scroll-margin-top:90px}
+@media(max-width:740px){#works{scroll-margin-top:110px}}
